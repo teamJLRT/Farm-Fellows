@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headfiles">
+  <meta charset="UTF-8" />
+  <link th:href="@{../css/styles.css}" rel="stylesheet">
+<!--  <link rel="icon" type="image/png" href="../favicon.png" />-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+<header th:fragment="header">
+  <h1>Farm Fellows</h1>
+
+  <nav>
+    <h2 th:if="${name}" th:text="${name}"></h2>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github">Log in with Github</a>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github">Log in with Google</a>
+    <a th:if="${name}" class="mainNavLink" href="/logout">Log Out</a>
+
+<!--    <a th:if="!${username}" href="/login" class="mainNavLink">Log In</a>-->
+<!--    <a th:if="!${username}" href="/signup" class="mainNavLink">Sign Up</a>-->
+<!--    <a th:if="${username}" href="/farmers" class="mainNavLink">All Farmers</a>-->
+<!--    <a th:if="${username}" href="/logout" class="mainNavLink">Log Out</a>-->
+<!--    <div id="userNameNav"  th:fragment="userName" th:if="${username != null}" th:text="${'Hi, ' + nickname + '!'}"></div>-->
+  </nav>
+</header>
+
+<footer th:fragment="footer">
+</footer>
+</body>
+</html>
