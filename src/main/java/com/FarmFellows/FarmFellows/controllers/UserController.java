@@ -20,14 +20,11 @@ public class UserController {
     public String OAuthLogin(@AuthenticationPrincipal OAuth2User principal, Model m){
         OAuth2User x = principal;
         if (principal != null){
+            Farmer f = new Farmer(principal.getAttribute("name"), principal.getAttribute("email"));
+            farmerRepository.save(f);
             m.addAttribute("name", principal.getAttribute("name"));
             m.addAttribute("email", principal.getAttribute("email"));
-            Farmer f = farmerRepository.findByemail(principal.getAttribute("email"));
-            if (f == null){
-                f = new Farmer(principal.getAttribute("name"), principal.getAttribute("email"));
-                farmerRepository.save(f);
-            }
-            m.addAttribute("farmer", f);
+
         }
         return "index";
     }
