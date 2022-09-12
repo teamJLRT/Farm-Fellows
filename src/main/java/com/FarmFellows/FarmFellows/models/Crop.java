@@ -1,13 +1,10 @@
 package com.FarmFellows.FarmFellows.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class Crops {
+public class Crop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,10 +14,12 @@ public class Crops {
     private Integer seedPrice;
     private Integer cropSellPrice;
 
-    public Crops() {
+    @OneToMany(mappedBy = "crops")
+    private Set<Farmer> farmers;
+    public Crop() {
     }
 
-    public Crops(String cropName, Integer seedPrice, Integer cropSellPrice, Integer cropGrowTime) {
+    public Crop(String cropName, Integer seedPrice, Integer cropSellPrice, Integer cropGrowTime) {
         this.cropName = cropName;
         this.cropGrowTime = cropGrowTime;
         this.seedPrice = seedPrice;
@@ -65,5 +64,13 @@ public class Crops {
 
     public void setCropSellPrice(Integer cropSellPrice) {
         this.cropSellPrice = cropSellPrice;
+    }
+
+    public Set<Farmer> getFarmers() {
+        return farmers;
+    }
+
+    public void setFarmers(Set<Farmer> farmers) {
+        this.farmers = farmers;
     }
 }
