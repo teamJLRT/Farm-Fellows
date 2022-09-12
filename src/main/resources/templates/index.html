@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:insert="fragments/general.html :: headfiles">
+    <title>Farm Fellows</title>
 </head>
 <body>
+<header th:insert="fragments/general.html :: header">
+</header>
 <h1>Hello There</h1>
+
 <h2 th:if="${name}" th:text="${name}"></h2>
 <p th:if="${email}" th:text="${email}"></p>
 <a th:if="!${name}" href="/oauth2/authorization/github">Github Login</a>
 <a th:if="!${name}" href="/oauth2/authorization/google">Google Login</a>
 <a th:if="${name}" href="/logout">Log Out</a>
+
 </body>
 </html>
