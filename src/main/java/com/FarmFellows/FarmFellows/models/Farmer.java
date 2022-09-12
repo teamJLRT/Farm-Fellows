@@ -1,9 +1,7 @@
 package com.FarmFellows.FarmFellows.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Farmer {
@@ -17,16 +15,14 @@ public class Farmer {
     private String profilePicUrl;
     private int cashOnHand;
 
-//    @OneToMany(mappedBy = "farmer")
-//    List<Crop> plantings;
-
+    @OneToMany(mappedBy = "farmers")
+    Set<Crop> crops;
+    protected Farmer() {};
     public Farmer(String fullName) {
         this.fullName = fullName;
         this.cashOnHand = 50;
         this.profilePicUrl = "../img/default.png";
     }
-
-
 
     public Long getId() {
         return id;
@@ -68,11 +64,11 @@ public class Farmer {
         this.cashOnHand = cashOnHand;
     }
 
-//    public List<Farm> getPlantings() {
-//        return plantings;
-//    }
-//
-//    public void setPlantings(List<Farm> plantings) {
-//        this.plantings = plantings;
-//    }
+    public Set<Crop> getCrops() {
+        return crops;
+    }
+
+    public void setCrops(Set<Crop> crops) {
+        this.crops = crops;
+    }
 }
