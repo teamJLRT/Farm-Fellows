@@ -14,14 +14,18 @@ public class Farmer {
     private String userName;
     private String profilePicUrl;
     private int cashOnHand;
+    private boolean admin;
+
+    private String email;
 
     @OneToMany(mappedBy = "farmer")
     Set<FarmerCrop> farmerCrops;
     protected Farmer() {};
-    public Farmer(String fullName) {
+    public Farmer(String fullName, String email) {
         this.fullName = fullName;
         this.cashOnHand = 50;
         this.profilePicUrl = "../img/default.png";
+        this.email = email;
     }
 
     public Long getId() {
@@ -70,5 +74,13 @@ public class Farmer {
 
     public void setFarmerCrops(Set<FarmerCrop> farmerCrops) {
         this.farmerCrops = farmerCrops;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
