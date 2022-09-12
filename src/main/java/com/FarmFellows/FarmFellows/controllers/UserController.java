@@ -15,6 +15,7 @@ public class UserController {
         OAuth2User x = principal;
         if (principal != null){
             m.addAttribute("name", principal.getAttribute("name"));
+            m.addAttribute("email", principal.getAttribute("email"));
         }
         return "index";
     }
