@@ -10,20 +10,15 @@
 </head>
 <body>
 <header th:fragment="header">
+  <nav>
+    <p class="mainNavLink">Log in:</p>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github"><img src="../img/github-logo.png" alt="Log in with GitHub"/></a>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github"><img src="../img/google-logo.svg" alt="Log in with Google"/></a>
+    <a th:if="${name}" class="mainNavLink" href="/logout">Log Out</a>
+    <h2 th:if="${name}" th:text="${name}"></h2>
+  </nav>
   <h1>Farm Fellows</h1>
 
-  <nav>
-    <h2 th:if="${name}" th:text="${name}"></h2>
-    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github">Log in with Github</a>
-    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github">Log in with Google</a>
-    <a th:if="${name}" class="mainNavLink" href="/logout">Log Out</a>
-
-<!--    <a th:if="!${username}" href="/login" class="mainNavLink">Log In</a>-->
-<!--    <a th:if="!${username}" href="/signup" class="mainNavLink">Sign Up</a>-->
-<!--    <a th:if="${username}" href="/farmers" class="mainNavLink">All Farmers</a>-->
-<!--    <a th:if="${username}" href="/logout" class="mainNavLink">Log Out</a>-->
-<!--    <div id="userNameNav"  th:fragment="userName" th:if="${username != null}" th:text="${'Hi, ' + nickname + '!'}"></div>-->
-  </nav>
 </header>
 
 <footer th:fragment="footer">

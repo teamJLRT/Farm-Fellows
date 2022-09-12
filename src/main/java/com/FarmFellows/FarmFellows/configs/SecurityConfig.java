@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/").permitAll()
                 .antMatchers("/css/**").permitAll()
+                .antMatchers("/img/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .exceptionHandling(e -> e
