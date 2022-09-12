@@ -15,8 +15,8 @@ public class Farmer {
     private String profilePicUrl;
     private int cashOnHand;
 
-    @OneToMany(mappedBy = "farmers")
-    Set<Crop> crops;
+    @OneToMany(mappedBy = "farmer")
+    Set<FarmerCrop> farmerCrops;
     protected Farmer() {};
     public Farmer(String fullName) {
         this.fullName = fullName;
@@ -64,11 +64,11 @@ public class Farmer {
         this.cashOnHand = cashOnHand;
     }
 
-    public Set<Crop> getCrops() {
-        return crops;
+    public Set<FarmerCrop> getFarmerCrops() {
+        return farmerCrops;
     }
 
-    public void setCrops(Set<Crop> crops) {
-        this.crops = crops;
+    public void setFarmerCrops(Set<FarmerCrop> farmerCrops) {
+        this.farmerCrops = farmerCrops;
     }
 }

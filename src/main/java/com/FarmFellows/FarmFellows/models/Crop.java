@@ -14,8 +14,8 @@ public class Crop {
     private Integer seedPrice;
     private Integer cropSellPrice;
 
-    @OneToMany(mappedBy = "crops")
-    private Set<Farmer> farmers;
+    @OneToMany(mappedBy = "crop")
+    private Set<FarmerCrop> farmerCrops;
     public Crop() {
     }
 
@@ -66,11 +66,11 @@ public class Crop {
         this.cropSellPrice = cropSellPrice;
     }
 
-    public Set<Farmer> getFarmers() {
-        return farmers;
+    public Set<FarmerCrop> getFarmerCrops() {
+        return farmerCrops;
     }
 
-    public void setFarmers(Set<Farmer> farmers) {
-        this.farmers = farmers;
+    public void setFarmerCrops(Set<FarmerCrop> farmerCrops) {
+        this.farmerCrops = farmerCrops;
     }
 }
