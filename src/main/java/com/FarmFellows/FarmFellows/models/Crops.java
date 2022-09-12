@@ -27,6 +27,14 @@ public class Crops {
         this.cropSellPrice = cropSellPrice;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getCropName() {
         return cropName;
     }
@@ -35,19 +43,27 @@ public class Crops {
         this.cropName = cropName;
     }
 
-    public int getSeedPrice() {
+    public Integer getCropGrowTime() {
+        return cropGrowTime;
+    }
+
+    public void setCropGrowTime(Integer cropGrowTime) {
+        this.cropGrowTime = cropGrowTime;
+    }
+
+    public Integer getSeedPrice() {
         return seedPrice;
     }
 
-    public void setSeedPrice(int seedPrice) {
+    public void setSeedPrice(Integer seedPrice) {
         this.seedPrice = seedPrice;
     }
 
-    public int getCropSellPrice() {
+    public Integer getCropSellPrice() {
         return cropSellPrice;
     }
 
-    public void setCropSellPrice(int cropSellPrice) {
+    public void setCropSellPrice(Integer cropSellPrice) {
         this.cropSellPrice = cropSellPrice;
     }
 }
