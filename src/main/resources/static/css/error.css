@@ -1,0 +1,20 @@
+
+
+html {
+  height: 100%;
+}
+
+body {
+  height: auto;
+  background: url("https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFybSUyMGFuaW1hdGVkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60") no-repeat left top;
+   background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  overflow: hidden;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
