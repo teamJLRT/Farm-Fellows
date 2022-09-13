@@ -1,9 +1,7 @@
 package com.FarmFellows.FarmFellows.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Farmer {
@@ -16,17 +14,17 @@ public class Farmer {
     private String userName;
     private String profilePicUrl;
     private int cashOnHand;
+    private boolean admin;
 
-//    @OneToMany(mappedBy = "farmer")
-//    List<Crop> plantings;
-
-    public Farmer(String fullName) {
+    @OneToMany(mappedBy = "farmer")
+    Set<FarmerCrop> farmerCrops;
+    protected Farmer() {};
+    public Farmer(String fullName, String userName) {
         this.fullName = fullName;
         this.cashOnHand = 50;
         this.profilePicUrl = "../img/default.png";
+        this.userName = userName;
     }
-
-
 
     public Long getId() {
         return id;
@@ -68,11 +66,19 @@ public class Farmer {
         this.cashOnHand = cashOnHand;
     }
 
-//    public List<Farm> getPlantings() {
-//        return plantings;
-//    }
-//
-//    public void setPlantings(List<Farm> plantings) {
-//        this.plantings = plantings;
-//    }
+    public Set<FarmerCrop> getFarmerCrops() {
+        return farmerCrops;
+    }
+
+    public void setFarmerCrops(Set<FarmerCrop> farmerCrops) {
+        this.farmerCrops = farmerCrops;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }
