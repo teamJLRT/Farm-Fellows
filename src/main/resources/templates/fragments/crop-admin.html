@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="crop-admin">
-<form th:action="${'/crops}" th:method="POST">
+<form th:action="@{/crops}" th:method="POST">
     <legend>Add a crop</legend>
     <label for="newCropName">Name</label>
     <input type="text" name="newCropName" id="newCropName" />
@@ -15,7 +15,7 @@
     <input type="submit" value="Add crop">
 </form>
 
-<form th:action="${'/crops}" th:method="PUT">
+<form th:action="@{/crops}" th:method="PUT">
     <legend>Modify a crop</legend>
     <label for="editCropType">Crop</label>
     <select name="editCropType" id="editCropType">
@@ -34,7 +34,7 @@
     <input type="submit" value="Update crop">
 </form>
 
-<form th:action="${'/crops}" th:method="DELETE">
+<form th:action="@{/crops}" th:method="DELETE">
     <label for="deleteCropType">Crop</label>
     <select name="deleteCropType" id="deleteCropType">
         <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name}" >
