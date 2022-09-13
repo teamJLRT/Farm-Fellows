@@ -18,14 +18,18 @@ public class UserController {
 
     @GetMapping("/")
     public String OAuthLogin(@AuthenticationPrincipal OAuth2User principal, Model m){
-        OAuth2User x = principal;
-        if (principal != null){
-            Farmer f = new Farmer(principal.getAttribute("name"), principal.getAttribute("email"));
-            farmerRepository.save(f);
-            m.addAttribute("name", principal.getAttribute("name"));
-            m.addAttribute("email", principal.getAttribute("email"));
 
+        if (principal != null) {
+            String userName = principal.getAttribute("name") + principal.getName();
+            Farmer f = farmerRepository.findByuserName(userName);
+            if (f == null || f.getFullName() == null){
+                f = new Farmer(principal.getAttribute("name"), userName);
+                farmerRepository.save(f);
+            }
+            m.addAttribute("name", f.getFullName());
+            m.addAttribute("farmer", f);
         }
+
         return "index";
     }
 }

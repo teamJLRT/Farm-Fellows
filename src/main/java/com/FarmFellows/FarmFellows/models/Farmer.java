@@ -16,16 +16,14 @@ public class Farmer {
     private int cashOnHand;
     private boolean admin;
 
-    private String email;
-
     @OneToMany(mappedBy = "farmer")
     Set<FarmerCrop> farmerCrops;
     protected Farmer() {};
-    public Farmer(String fullName, String email) {
+    public Farmer(String fullName, String userName) {
         this.fullName = fullName;
         this.cashOnHand = 50;
         this.profilePicUrl = "../img/default.png";
-        this.email = email;
+        this.userName = userName;
     }
 
     public Long getId() {
