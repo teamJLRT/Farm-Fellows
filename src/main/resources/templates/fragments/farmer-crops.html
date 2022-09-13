@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantings</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Crop</th>
+            <th>Quantity</th>
+            <th>Planted</th>
+            <th>Time Remaining</th>
+        </tr>
+        <tr th:each="planting : farmer.farmerCrops)">
+            <td th:text="${planting.crop.cropName}"></td>
+            <td th:text="${planting.quantity}"></td>
+            <td th:text="${#temporals.format(planting.planted, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${planting.secondsLeft()}"></td>
+
+        </tr>
+    </table>
+</body>
+</html>
