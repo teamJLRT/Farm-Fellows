@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Crops</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Grow Time</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
+        </tr>
+        <tr th:each="crop : ${cropList}">
+            <td th:text="${crop.cropName}"></td>
+            <td th:text="${crop.cropGrowTime}"></td>
+            <td th:text="${crop.seedPrice}"></td>
+            <td th:text="${crop.cropSellPrice}"></td>
+        </tr>
+    </table>
+</body>
+</html>

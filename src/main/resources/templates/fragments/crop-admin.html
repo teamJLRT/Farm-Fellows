@@ -19,7 +19,7 @@
     <legend>Modify a crop</legend>
     <label for="editCropType">Crop</label>
     <select name="editCropType" id="editCropType">
-        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name}" >
+        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
         </option>
     </select>
     <legend>Add a crop</legend>
@@ -37,7 +37,7 @@
 <form th:action="@{/crops}" th:method="DELETE">
     <label for="deleteCropType">Crop</label>
     <select name="deleteCropType" id="deleteCropType">
-        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name}" >
+        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
         </option>
     </select>
 </form>
