@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-
+<div th:fragment="crop-admin">
 <form th:action="${'/crops}" th:method="POST">
     <legend>Add a crop</legend>
     <label for="newCropName">Name</label>
@@ -41,6 +41,6 @@
         </option>
     </select>
 </form>
-
+</div>
 </body>
 </html>
