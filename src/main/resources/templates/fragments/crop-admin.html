@@ -3,6 +3,7 @@
 <body>
 <div th:fragment="crop-admin">
 <h2>Admin Forms:</h2>
+    <div id="cropAdminForms">
 <form th:action="@{/crops}" th:method="POST">
     <legend>Add a crop</legend>
     <label for="newCropName">Name</label>
@@ -24,7 +25,6 @@
             <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
             </option>
         </select>
-        <legend>Add a crop</legend>
         <label for="editedCropName">Name</label>
         <input type="text" name="editedCropName" id="editedCropName" />
         <label for="editedCropBuyPrice">Buy Price</label>
@@ -36,15 +36,16 @@
         <input type="submit" value="Update crop">
     </form>
 
-
-<form th:action="@{/crops}" th:method="DELETE">
-    <label for="deleteCropType">Crop</label>
-    <select name="deleteCropType" id="deleteCropType">
-        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
-        </option>
-    </select>
-    <input type="submit" value="Delete crop" />
-</form>
+    <form th:action="@{/crops}" th:method="DELETE">
+        <legend>Delete a crop</legend>
+        <label for="deleteCropType">Crop</label>
+        <select name="deleteCropType" id="deleteCropType">
+            <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
+            </option>
+        </select>
+        <input type="submit" value="Delete crop" />
+    </form>
+    </div>
 </div>
 </body>
 </html>
