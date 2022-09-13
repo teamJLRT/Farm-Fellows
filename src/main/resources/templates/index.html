@@ -8,8 +8,13 @@
 </header>
 <h1>Hello There</h1>
 
-<h2 th:if="${name}" th:text="${name}"></h2>
-<h3 th:if="${farmer}" th:text="${farmer.getUserName()}"></h3>
 
+<!--<h2 th:if="${name}" th:text="${name}"></h2>-->
+<!--<p th:if="${email}" th:text="${email}"></p>-->
+<!--<a th:if="!${name}" href="/oauth2/authorization/github">Github Login</a>-->
+<!--<a th:if="!${name}" href="/oauth2/authorization/google">Google Login</a>-->
+<!--<a th:if="${name}" href="/logout">Log Out</a>-->
+
+<h3 th:if="${farmer}" th:text="${farmer.getUserName()}"></h3>
 </body>
 </html>

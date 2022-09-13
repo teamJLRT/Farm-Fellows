@@ -52,16 +52,25 @@ form * {
     margin: 5px 0px;
 }
 
-.mainNavLink {
+.navLoginBlock {
+    background-color: #c5ddf1;
+    border-radius: 5px;
+    margin: 3px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.navLoginBlock img {
+    max-width: 25px;
+}
+
+.navLoginBlock * {
     color: #131d25;
     font-weight: bold;
     font-size: 1.5em;
     text-decoration: none;
-    padding: 10px;
-}
-
-.mainNavLink img {
-    max-width: 25px;
+    padding: 2px 5px;
 }
 
 /* #submitButton {
