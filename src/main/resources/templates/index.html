@@ -8,6 +8,7 @@
 <h1>Hello There</h1>
 
 <h3 th:if="${farmer}" th:text="${farmer.getUserName()}"></h3>
+<section th:if="${farmer} and ${farmer.isAdmin()}" th:insert="fragments/crop-admin.html :: div"></section>
 <footer th:insert="fragments/footer.html :: footer"></footer>
 </body>
 </html>
