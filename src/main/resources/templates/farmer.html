@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/general.html :: headfiles">
+    <title>Farm Fellows</title>
 </head>
 <body>
+<header th:insert="fragments/general.html :: header">
+</header>
+<h1>Hello There</h1>
 
-<!--show crops; show buy crops button; show farm value-->
+<!--functionality is similar to code fellowship - we need the controller to attach the info of the user who's viewing the page, as well as the user whose page it is-->
+
+
+<div id="farm">
+<!--    displays only if user is viewing own farm-->
+    <div th:if="${name}" id="crop-shop">
+        <h2>Buy Crops</h2>
+        <form th:action="${'/farmer/' + userId}" th:method="PUT">
+            <label for="crop-type">Crop Type</label>
+            <select name="crop-type" id="crop-type">
+                <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name} + ' (' + ${crop.seedPrice} + ')'" >
+                </option>
+            </select>
+            <label for="crop-quantity">How Many?</label>
+            <input type="number" name="crop-quantity" id="crop-quantity" />
+            <input type="submit" id="crop-shop-submit" value="Buy!" />
+        </form>
+    </div>
+    <div id="reset-farm">
+        <form th:action="${'/farmer/' + userId}" th:method="PUT">
+<!--            resets farm to beginning state (no crops, 50 money)-->
+        </form>
+    </div>
+</div>
+
+<div id="user-info">
+<!--    displays which user's page this is; update to username-->
+    <h3 th:text="${'User info for user id: ' + dbUserId}"></h3>
+<!--    displays profile pic. If user is logged in, displays field to update profile pic url -->
+    <div id="user-profile-pic">
+        <form th:action="${'/farmer/' + userId}" th:method="PUT">
+            <img src="../images/default.png" alt="default profile image" width="150px"/>
+            <label for="imageUrl">Profile pic URL</label>
+            <input type="text" name="imageUrl" id="imageUrl" />
+            <input th:if="${userId.equals(dbUserId)}" type="submit" value="Update profile picture">
+        </form>
+    </div>
+<!--    If user is logged in, displays form to edit username-->
+    <div id="user-display-name">
+        <p th:if="!${userId.equals(farmerId)}" th:text="${display-name}"></p>
+        <form th:if="${userId.equals(farmerId)}" th:action="${'/farmer/' + userId}" th:method="PUT">
+            <label for="display-name">Username</label>
+            <input type="text" name="display-name" id="display-name" />
+            <input type="submit" value="Update display name" />
+        </form>
+    </div>
+
+
+    <div id="user-cash">
+        <!--        returns user's total cash on hand from database-->
+        <h2 th:if="${name}">Cash on hand</h2>
+    </div>
+    <div id="user-farm-value">
+        <!--        calculates total farm value: cash on hand plus (purchase) value of all crops -->
+        <h2 th:if="${name}">Total farm value</h2>
+    </div>
+</div>
 
 </body>
 </html>
