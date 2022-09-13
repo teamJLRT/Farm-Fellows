@@ -25,7 +25,7 @@ public class CropController {
     @Autowired
     FarmerRepository farmerRepository;
 
-    @GetMapping("/crop")
+    @GetMapping("/crops")
     public String getCrop(@AuthenticationPrincipal OAuth2User principal, Model m){
         String userName = principal.getAttribute("name") + principal.getName();
         Farmer f = farmerRepository.findByuserName(userName);
@@ -34,33 +34,34 @@ public class CropController {
         }
         List<Crop> crops = cropRepository.findAll();
         m.addAttribute("crops", crops);
-        return "crop_list";
+        return "index";
     }
 
-    @PostMapping("/crop")
-    public RedirectView addCrop(@AuthenticationPrincipal OAuth2User principal, String cropName, Integer buyPrice, Integer sellPrice, Integer growthTime){
+    @PostMapping("/crops")
+    public RedirectView addCrop(@AuthenticationPrincipal OAuth2User principal, String newCropName, Integer newCropBuyPrice, Integer newCropSellPrice, Integer newCropGrowTime){
         String userName = principal.getAttribute("name") + principal.getName();
         Farmer f = farmerRepository.findByuserName(userName);
         if (f != null && f.isAdmin()){
-            Crop newCrop = new Crop(cropName, buyPrice, sellPrice, growthTime);
+            Crop newCrop = new Crop(newCropName, newCropBuyPrice, newCropSellPrice, newCropGrowTime);
             cropRepository.save(newCrop);
         }
-        return new RedirectView("/crop");
+        return new RedirectView("/");
     }
 
-    @PutMapping("/crop")
-    public RedirectView editCrop(@AuthenticationPrincipal OAuth2User principal, String cropName, Integer buyPrice, Integer sellPrice, Integer growthTime){
+    @PutMapping("/crops")
+    public RedirectView editCrop(@AuthenticationPrincipal OAuth2User principal, String editCropType, String editedCropName, Integer editedCropBuyPrice, Integer editedCropSellPrice, Integer editedCropGrowTime){
         String userName = principal.getAttribute("name") + principal.getName();
         Farmer f = farmerRepository.findByuserName(userName);
         if (f != null && f.isAdmin()){
-            Crop c = cropRepository.findBycropName(cropName);
+            Crop c = cropRepository.findBycropName(editCropType);
             if (c != null){
-                c.setSeedPrice(buyPrice);
-                c.setCropSellPrice(sellPrice);
-                c.setCropGrowTime(growthTime);
+                c.setCropName(editedCropName);
+                c.setSeedPrice(editedCropBuyPrice);
+                c.setCropSellPrice(editedCropSellPrice);
+                c.setCropGrowTime(editedCropGrowTime);
                 cropRepository.save(c);
             }
         }
-        return new RedirectView("/crop");
+        return new RedirectView("/");
     }
 }
