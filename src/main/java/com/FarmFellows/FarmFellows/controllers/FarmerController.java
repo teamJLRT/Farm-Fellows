@@ -1,6 +1,8 @@
 package com.FarmFellows.FarmFellows.controllers;
 
+import com.FarmFellows.FarmFellows.models.Crop;
 import com.FarmFellows.FarmFellows.models.Farmer;
+import com.FarmFellows.FarmFellows.repositories.CropRepository;
 import com.FarmFellows.FarmFellows.repositories.FarmerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -9,11 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class FarmerController {
 
     @Autowired
     FarmerRepository farmerRepository;
+    @Autowired
+    CropRepository cropRepository;
 
     @GetMapping("/")
     public String OAuthLogin(@AuthenticationPrincipal OAuth2User principal, Model m){
@@ -25,6 +31,8 @@ public class FarmerController {
                 f = new Farmer(principal.getAttribute("name"), userName);
                 farmerRepository.save(f);
             }
+            List<Crop> crops = cropRepository.findAll();
+            m.addAttribute("cropList", crops);
             m.addAttribute("name", f.getFullName());
             m.addAttribute("farmer", f);
         }

@@ -25,17 +25,6 @@ public class CropController {
     @Autowired
     FarmerRepository farmerRepository;
 
-    @GetMapping("/crops")
-    public String getCrop(@AuthenticationPrincipal OAuth2User principal, Model m){
-        String userName = principal.getAttribute("name") + principal.getName();
-        Farmer f = farmerRepository.findByuserName(userName);
-        if (f != null){
-            m.addAttribute("farmer", f);
-        }
-        List<Crop> crops = cropRepository.findAll();
-        m.addAttribute("crops", crops);
-        return "index";
-    }
 
     @PostMapping("/crops")
     public RedirectView addCrop(@AuthenticationPrincipal OAuth2User principal, String newCropName, Integer newCropBuyPrice, Integer newCropSellPrice, Integer newCropGrowTime){
@@ -49,11 +38,11 @@ public class CropController {
     }
 
     @PutMapping("/crops")
-    public RedirectView editCrop(@AuthenticationPrincipal OAuth2User principal, String editCropType, String editedCropName, Integer editedCropBuyPrice, Integer editedCropSellPrice, Integer editedCropGrowTime){
+    public RedirectView editCrop(@AuthenticationPrincipal OAuth2User principal, Long editCropType, String editedCropName, Integer editedCropBuyPrice, Integer editedCropSellPrice, Integer editedCropGrowTime){
         String userName = principal.getAttribute("name") + principal.getName();
         Farmer f = farmerRepository.findByuserName(userName);
         if (f != null && f.isAdmin()){
-            Crop c = cropRepository.findBycropName(editCropType);
+            Crop c = cropRepository.findById(editCropType).orElseThrow();
             if (c != null){
                 c.setCropName(editedCropName);
                 c.setSeedPrice(editedCropBuyPrice);
