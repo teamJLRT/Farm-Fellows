@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<header th:fragment="header">
+  <nav>
+    <p th:if="${name}" th:text="'Hi, ' + ${name} + '!'"></p>
+    <div class="navLoginBlock">
+    <p th:if="!${name}">Log in:</p>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github"><img src="../img/github-logo.png" alt="Log in with GitHub"/></a>
+    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/google"><img src="../img/google-logo.svg" alt="Log in with Google"/></a>
+    <a th:if="${name}" class="mainNavLink" href="/logout">Log Out</a>
+    </div>
+  </nav>
+</header>
+</body>
+</html>

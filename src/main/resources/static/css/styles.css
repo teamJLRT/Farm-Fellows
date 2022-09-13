@@ -22,6 +22,7 @@ nav {
     display: flex;
     justify-content:end;
     align-items: center;
+    min-height: 50px;
 }
 
 h1 {
