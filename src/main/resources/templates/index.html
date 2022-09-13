@@ -4,10 +4,11 @@
     <title>Farm Fellows</title>
 </head>
 <body>
-<header th:insert="fragments/header.html :: header">
-</header>
+<header th:insert="fragments/header.html :: header"></header>
 <h1>Hello There</h1>
 
 <h3 th:if="${farmer}" th:text="${farmer.getUserName()}"></h3>
+
+<footer th:insert="fragments/footer.html :: footer"></footer>
 </body>
 </html>

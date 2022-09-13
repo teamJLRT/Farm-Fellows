@@ -17,10 +17,20 @@ main {
     padding: 25px;
 }
 
+footer {
+    background-color:#582618;
+    min-height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    color:#c5ddf1;
+    font-weight: bold;
+}
+
 nav {
     background-color: #3F83BF;
     display: flex;
-    justify-content:end;
+    justify-content: end;
     align-items: center;
     min-height: 50px;
 }
@@ -42,7 +52,7 @@ h2 {
 form {
     background-color: #71A8D9;
     border-radius: 0px 10px;
-    color:#131d25;
+    color: #131d25;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -72,6 +82,10 @@ form * {
     font-size: 1.5em;
     text-decoration: none;
     padding: 2px 5px;
+}
+
+#footer-text {
+    margin: auto;
 }
 
 /* #submitButton {
