@@ -23,6 +23,24 @@
 
 </header>
 
+<!--countdown timer-->
+<div th:fragment="counter">
+<div class="container">
+  <h1 id="count">10</h1>
+  <script th:inline="javascript">
+  var counter = [10];
+  setInterval( function(){
+    counter--;
+
+    if(counter >= 0){
+    id = document.getElementById("count");
+    id.innerHTML = counter;
+    }
+  }, 1000)
+  </script>
+</div>
+</div>
+
 <footer th:fragment="footer">
 </footer>
 </body>
