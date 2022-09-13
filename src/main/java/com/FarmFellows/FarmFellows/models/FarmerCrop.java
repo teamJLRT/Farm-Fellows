@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class FarmerCrop {
@@ -72,6 +73,17 @@ public class FarmerCrop {
 
     public void setFarmer(Farmer farmer) {
         this.farmer = farmer;
+    }
+
+    public Integer secondsLeft(){
+        LocalDateTime currentTime = LocalDateTime.now();
+        Integer secondsSincePlanted = Math.toIntExact(ChronoUnit.SECONDS.between(this.planted, currentTime));
+        Integer secondsRemaining = this.crop.getCropGrowTime() - secondsSincePlanted;
+        return secondsRemaining;
+    }
+
+    public boolean isReady(){
+        return secondsLeft() <= 0;
     }
 
 
