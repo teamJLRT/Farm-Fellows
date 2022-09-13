@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form th:action="${'/crops}" th:method="POST">
+    <legend>Add a crop</legend>
+    <label for="newCropName">Name</label>
+    <input type="text" name="newCropName" id="newCropName" />
+    <label for="newCropBuyPrice">Seed Price</label>
+    <input type="text" name="newCropBuyPrice" id="newCropBuyPrice" />
+    <label for="newCropSellPrice">Sell Price</label>
+    <input type="text" name="newCropSellPrice" id="newCropSellPrice" />
+    <label for="newCropGrowTime">Grow time (seconds)</label>
+    <input type="text" name="newCropGrowTime" id="newCropGrowTime" />
+    <input type="submit" value="Add crop">
+</form>
+
+<form th:action="${'/crops}" th:method="PUT">
+    <legend>Modify a crop</legend>
+    <label for="editCropType">Crop</label>
+    <select name="editCropType" id="editCropType">
+        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name}" >
+        </option>
+    </select>
+    <legend>Add a crop</legend>
+    <label for="editedCropName">Name</label>
+    <input type="text" name="editedCropName" id="editedCropName" />
+    <label for="editedCropBuyPrice">Buy Price</label>
+    <input type="text" name="editedCropBuyPrice" id="editedCropBuyPrice" />
+    <label for="editedCropSellPrice">Sell Price</label>
+    <input type="text" name="editedCropSellPrice" id="editedCropSellPrice" />
+    <label for="editedCropGrowTime">Grow time (seconds)</label>
+    <input type="text" name="editedCropGrowTime" id="editedCropGrowTime" />
+    <input type="submit" value="Update crop">
+</form>
+
+<form th:action="${'/crops}" th:method="DELETE">
+    <label for="deleteCropType">Crop</label>
+    <select name="deleteCropType" id="deleteCropType">
+        <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.name}" >
+        </option>
+    </select>
+</form>
+
+</body>
+</html>
