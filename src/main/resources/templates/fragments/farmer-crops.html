@@ -18,19 +18,20 @@
             <td th:text="${planting.quantity}"></td>
             <td th:text="${planting.plantedAt}"></td>
             <td th:id="${planting.id} + 'sellTimer'"></td>
+            <td>
+                <form th:action="@{/planting}" th:method="PUT">
+                    <input type ="number" name="quantity" min="0" th:max="${planting.quantity}">
+                    <input type="hidden" th:value="${planting.id}" name="plantingId">
+                    <input type="submit" th:id="${planting.id} + 'sellButton'" disabled>
+                </form>
+            </td>
             <script th:inline="javascript">
                 id = [[${planting.id}]] + 'sellTimer';
                 timeLeft = [[${planting.timeRemaining()}]]
-                changeTime(id, timeLeft);
+                buttonid = [[${planting.id}]] + 'sellButton';
+                changeTime(id, buttonid, timeLeft);
                 //to do: button enable based on time remaining
             </script>
-            <td>
-                <form th:action="@{/planting}" th:method="PUT">
-                    <input type ="number" name="quantity">
-                    <input type="hidden" th:value="${planting.id}" name="plantingId">
-                    <input type="submit">
-                </form>
-            </td>
         </tr>
         <caption th:text="${farmer.getFullName()} + 's Crops'"></caption>
     </table>
