@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/general.html :: headfiles">
+<head th:insert="fragments/head.html :: headfiles">
     <title>Farm Fellows</title>
 </head>
 <body>
-<header th:insert="fragments/general.html :: header">
+<header th:insert="fragments/header.html :: header">
 </header>
-
+<main>
+    <div id="allFarmersDiv">
+        <table class="sortable">
+            <tr>
+                <th>Farmer</th>
+                <th>Farm Value</th>
+            </tr>
+            <tr th:each="farmer : ${farmerList}">
+                <td th:text="${farmer.fullName}"></td>
+                <td th:text="${farmer.totalFarmValue}"></td>
+            </tr>
+            <caption>All Farmers</caption>
+        </table>
+    </div>
+</main>
+<footer th:insert="fragments/footer.html :: footer"></footer>
 </body>
 </html>
