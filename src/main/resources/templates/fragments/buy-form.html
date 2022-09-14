@@ -18,7 +18,7 @@
             <td th:text="'Grow Time (Seconds): ' + ${crop.cropGrowTime}"></td>
             <td>
                 <form th:action="@{/planting}" th:method="POST">
-                    <input type="number" name="quantity" id="quantity">
+                    <input type="number" name="quantity" id="quantity" min="0" th:max="${farmer.maxBuyQuantity(crop)}">
                     <input type="hidden" name="farmerId" id="farmerId" th:value="${farmer.id}">
                     <input type="hidden" name="cropId" id="cropId" th:value="${crop.id}">
                     <input type="submit" value="Buy">
