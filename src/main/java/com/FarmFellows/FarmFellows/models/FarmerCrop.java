@@ -2,10 +2,7 @@ package com.FarmFellows.FarmFellows.models;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -13,26 +10,29 @@ import java.time.temporal.ChronoUnit;
 public class FarmerCrop {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "farmer_id")
-    private Farmer farmer;
+    Farmer farmer;
+
     @ManyToOne
     @JoinColumn(name = "crop_id")
-    private Crop crop;
+    Crop crop;
 
-    private int quantity;
+    LocalDateTime plantedAt;
 
-    private LocalDateTime planted;
+    int quantity;
 
-    protected FarmerCrop() {};
+    protected FarmerCrop() {
+    }
 
-    public FarmerCrop(Farmer farmer, Crop crop, int quantity, LocalDateTime planted) {
+    public FarmerCrop(Farmer farmer, Crop crop, LocalDateTime plantedAt, int quantity) {
         this.farmer = farmer;
         this.crop = crop;
+        this.plantedAt = plantedAt;
         this.quantity = quantity;
-        this.planted = planted;
     }
 
     public Long getId() {
@@ -43,20 +43,12 @@ public class FarmerCrop {
         this.id = id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Farmer getFarmer() {
+        return farmer;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public LocalDateTime getPlanted() {
-        return planted;
-    }
-
-    public void setPlanted(LocalDateTime planted) {
-        this.planted = planted;
+    public void setFarmer(Farmer farmer) {
+        this.farmer = farmer;
     }
 
     public Crop getCrop() {
@@ -67,24 +59,20 @@ public class FarmerCrop {
         this.crop = crop;
     }
 
-    public Farmer getFarmer() {
-        return farmer;
+    public LocalDateTime getPlantedAt() {
+        return plantedAt;
     }
 
-    public void setFarmer(Farmer farmer) {
-        this.farmer = farmer;
+    public void setPlantedAt(LocalDateTime plantedAt) {
+        this.plantedAt = plantedAt;
     }
 
-    public Integer secondsLeft(){
-        LocalDateTime currentTime = LocalDateTime.now();
-        Integer secondsSincePlanted = Math.toIntExact(ChronoUnit.SECONDS.between(this.planted, currentTime));
-        Integer secondsRemaining = this.crop.getCropGrowTime() - secondsSincePlanted;
-        return secondsRemaining;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public boolean isReady(){
-        return secondsLeft() <= 0;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-
-
 }
+

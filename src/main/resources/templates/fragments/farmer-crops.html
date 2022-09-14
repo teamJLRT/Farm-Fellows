@@ -12,13 +12,11 @@
             <th>Planted</th>
             <th>Time Remaining</th>
         </tr>
-        <tr th:each="planting : farmer.farmerCrops)">
+        <tr th:each="planting : ${farmercrops}">
             <td th:text="${planting.crop.cropName}"></td>
             <td th:text="${planting.quantity}"></td>
-            <td th:text="${#temporals.format(planting.planted, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td th:text="${planting.secondsLeft()}"></td>
-
         </tr>
+        <caption th:text="${farmer} + 's Crops'"></caption>
     </table>
 </body>
 </html>

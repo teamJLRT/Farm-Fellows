@@ -1,6 +1,7 @@
 package com.FarmFellows.FarmFellows.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class Farmer {
     private boolean admin;
 
     @OneToMany(mappedBy = "farmer")
-    Set<FarmerCrop> farmerCrops;
+    Set<FarmerCrop> crops;
     protected Farmer() {};
     public Farmer(String fullName, String userName) {
         this.fullName = fullName;
@@ -66,12 +67,12 @@ public class Farmer {
         this.cashOnHand = cashOnHand;
     }
 
-    public Set<FarmerCrop> getFarmerCrops() {
-        return farmerCrops;
+    public Set<FarmerCrop> getCrops() {
+        return crops;
     }
 
-    public void setFarmerCrops(Set<FarmerCrop> farmerCrops) {
-        this.farmerCrops = farmerCrops;
+    public void setCrops(Set<FarmerCrop> crops) {
+        this.crops = crops;
     }
 
     public boolean isAdmin() {
