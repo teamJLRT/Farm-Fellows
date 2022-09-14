@@ -31,6 +31,15 @@ public class Farmer {
         return this.cashOnHand/price;
     }
 
+    public Integer totalFarmValue() {
+        Integer totalFarmValue = this.cashOnHand;
+        for (Planting crop :
+                this.crops) {
+            totalFarmValue += crop.getQuantity() * crop.getCrop().getSeedPrice();
+        }
+        return totalFarmValue;
+    }
+
     public Long getId() {
         return id;
     }

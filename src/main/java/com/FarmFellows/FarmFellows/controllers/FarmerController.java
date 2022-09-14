@@ -43,4 +43,20 @@ public class FarmerController {
 
         return "index";
     }
+
+    @GetMapping("/all-farmers")
+    public String getAllFarmers(@AuthenticationPrincipal OAuth2User principal, Model m){
+
+        if (principal != null) {
+            String userName = principal.getAttribute("name") + principal.getName();
+
+            Farmer f = farmerRepository.findByuserName(userName);
+            List<Farmer> allFarmers = farmerRepository.findAll();
+
+            m.addAttribute("name", f.getFullName());
+            m.addAttribute("farmerList", allFarmers);
+        }
+
+        return "all-farmers";
+    }
 }
