@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head.html :: headfiles">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header th:insert="fragments/header.html :: header"></header>
+    <h1 th:text="${otherFarmer.getFullName()} + ' Farm'"></h1>
+    <h2 th:text="'Net Worth: ' + ${otherFarmer.totalFarmValue()}"></h2>
+    <table>
+        <caption th:text="${otherFarmer.getFullName()} + ' plantings'"></caption>
+        <tr>
+            <th>Crop</th>
+            <th>Quantity</th>
+            <th>Planted</th>
+        </tr>
+        <tr th:each="planting : ${otherFarmer.crops}">
+            <td th:text="${planting.crop.cropName}"></td>
+            <td th:text="${planting.quantity}"></td>
+            <td th:text="${planting.plantedAt}"></td>
+    </table>
+</body>
+</html>
