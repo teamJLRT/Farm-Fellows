@@ -1,7 +1,6 @@
 package com.FarmFellows.FarmFellows.models;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +15,7 @@ public class Crop {
     private Integer cropSellPrice;
 
     @OneToMany(mappedBy = "crop")
-    private Set<FarmerCrop> farmers;
+    private Set<Planting> farmers;
     public Crop() {
     }
 
@@ -67,11 +66,11 @@ public class Crop {
         this.cropSellPrice = cropSellPrice;
     }
 
-    public Set<FarmerCrop> getFarmers() {
+    public Set<Planting> getFarmers() {
         return farmers;
     }
 
-    public void setFarmers(Set<FarmerCrop> farmers) {
+    public void setFarmers(Set<Planting> farmers) {
         this.farmers = farmers;
     }
 }

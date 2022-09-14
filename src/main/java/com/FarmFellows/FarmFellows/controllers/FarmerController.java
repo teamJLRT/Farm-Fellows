@@ -2,7 +2,7 @@ package com.FarmFellows.FarmFellows.controllers;
 
 import com.FarmFellows.FarmFellows.models.Crop;
 import com.FarmFellows.FarmFellows.models.Farmer;
-import com.FarmFellows.FarmFellows.models.FarmerCrop;
+import com.FarmFellows.FarmFellows.models.Planting;
 import com.FarmFellows.FarmFellows.repositories.CropRepository;
 import com.FarmFellows.FarmFellows.repositories.FarmerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,8 @@ public class FarmerController {
                 farmerRepository.save(f);
             }
             List<Crop> crops = cropRepository.findAll();
-            Set<FarmerCrop> fc = f.getCrops();
-            m.addAttribute("farmercrops", fc);
+            Set<Planting> p = f.getCrops();
+            m.addAttribute("plantings", p);
             m.addAttribute("cropList", crops);
             m.addAttribute("name", f.getFullName());
             m.addAttribute("farmer", f);
