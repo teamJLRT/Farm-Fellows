@@ -1,9 +1,7 @@
 package com.FarmFellows.FarmFellows.controllers;
 
-import com.FarmFellows.FarmFellows.models.Crop;
-import com.FarmFellows.FarmFellows.models.Farmer;
-import com.FarmFellows.FarmFellows.models.Friend;
-import com.FarmFellows.FarmFellows.models.Planting;
+import com.FarmFellows.FarmFellows.models.*;
+import com.FarmFellows.FarmFellows.repositories.CommentRepository;
 import com.FarmFellows.FarmFellows.repositories.CropRepository;
 import com.FarmFellows.FarmFellows.repositories.FarmerRepository;
 import com.FarmFellows.FarmFellows.repositories.FriendRepository;
@@ -28,9 +26,10 @@ public class FarmerController {
     FarmerRepository farmerRepository;
     @Autowired
     CropRepository cropRepository;
-
     @Autowired
     FriendRepository friendRepository;
+    @Autowired
+    CommentRepository commentRepository;
 
     @GetMapping("/")
     public String OAuthLogin(@AuthenticationPrincipal OAuth2User principal, Model m){
@@ -88,6 +87,17 @@ public class FarmerController {
             LocalDateTime currentTime = LocalDateTime.now();
             Friend friendship = new Friend(farmer, otherFarmer, currentTime);
             friendRepository.save(friendship);
+        }
+        return new RedirectView("/" + id);
+    }
+
+    @PostMapping("/{id}/addcomment")
+    public RedirectView addComment(@AuthenticationPrincipal OAuth2User principal, Long farmerId, String text, @PathVariable Long id){
+        if(principal != null){
+            Farmer receivingComment = farmerRepository.findById(farmerId).orElseThrow();
+            Farmer makingComment = farmerRepository.findById(id).orElseThrow();
+            Comment comment = new Comment(receivingComment, makingComment.getFullName(), text);
+            commentRepository.save(comment);
         }
         return new RedirectView("/" + id);
     }

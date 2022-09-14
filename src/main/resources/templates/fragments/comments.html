@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+</head>
+<body>
+    <section class="comments" >
+        <h2 th:text="${farmer.fullName} + '`s received comments'"></h2>
+        <ul th:each="comment : ${farmer.comments}">
+            <li>
+                <p  th:text="${comment.text}"></p>
+                <h5 th:text="'Author: ' + ${comment.commenterName}"></h5>
+            </li>
+        </ul>
+    </section>
+</body>
+</html>

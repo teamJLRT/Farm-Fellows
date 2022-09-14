@@ -17,6 +17,7 @@
         <input type="hidden"th:value="${farmer.id}" name="farmerId">
         <input type="submit" value="Submit Comment">
     </form>
+    <section th:replace="fragments/comments.html :: section"></section>
     <table>
         <caption th:text="${otherFarmer.getFullName()} + ' plantings'"></caption>
         <tr>
