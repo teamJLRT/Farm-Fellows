@@ -6,6 +6,7 @@
 </head>
 <body>
     <table>
+        <caption th:text="${farmer.getFullName()} + 's Crops'"></caption>
         <script th:src="@{../js/script.js}"></script>
         <tr>
             <th>Crop</th>
@@ -22,7 +23,7 @@
                 <form th:action="@{/planting}" th:method="PUT">
                     <input type ="number" name="quantity" min="0" th:max="${planting.quantity}">
                     <input type="hidden" th:value="${planting.id}" name="plantingId">
-                    <input type="submit" th:id="${planting.id} + 'sellButton'" disabled>
+                    <input type="submit" th:id="${planting.id} + 'sellButton'" value="Sell" disabled>
                 </form>
             </td>
             <script th:inline="javascript">
@@ -33,7 +34,6 @@
                 //to do: button enable based on time remaining
             </script>
         </tr>
-        <caption th:text="${farmer.getFullName()} + 's Crops'"></caption>
     </table>
 </body>
 </html>
