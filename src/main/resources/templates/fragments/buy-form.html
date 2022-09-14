@@ -5,24 +5,26 @@
     <title>Buy Crops</title>
 </head>
 <body>
-    <table>
+    <table id="cropsTable">
         <caption text="Buy Crops'"></caption>
         <tr>
             <th>Crop Name</th>
             <th>Buy Price</th>
+            <th>Sell Price</th>
             <th>Grow Time (Seconds)</th>
             <th>Buy Form</th>
         </tr>
         <tr th:each="crop : ${cropList}">
-            <td th:text="'Name: ' + ${crop.cropName}"></td>
-            <td th:text="'Price: ' + ${crop.seedPrice}"></td>
-            <td th:text="'Grow Time (Seconds): ' + ${crop.cropGrowTime}"></td>
+            <td th:text="${crop.cropName}"></td>
+            <td th:text="${crop.seedPrice}"></td>
+            <td th:text="${crop.cropSellPrice}"></td>
+            <td th:text="${crop.cropGrowTime}"></td>
             <td>
-                <form th:action="@{/planting}" th:method="POST">
+                <form class="cropBuySellForm" th:action="@{/planting}" th:method="POST">
                     <input type="number" name="quantity" id="quantity" min="0" th:max="${farmer.maxBuyQuantity(crop)}">
                     <input type="hidden" name="farmerId" id="farmerId" th:value="${farmer.id}">
                     <input type="hidden" name="cropId" id="cropId" th:value="${crop.id}">
-                    <input type="submit" value="Buy">
+                    <input class="blueButton blueHover" type="submit" value="Buy">
                 </form>
             </td>
         </tr>

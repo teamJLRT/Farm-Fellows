@@ -66,8 +66,6 @@ h3 {
 }
 
 form {
-    background-color: #71A8D9;
-    border: 2px solid #131d25;
     color: #131d25;
 }
 
@@ -109,12 +107,15 @@ legend {
     font-weight: bold;
 }
 
+input[type=number] {
+    width: 75px;
+}
+
 .navButton {
     background-color: #c5ddf1;
     padding: 3px;
     margin: 3px;
 }
-
 
 .navBlock {
     display: flex;
@@ -125,10 +126,34 @@ legend {
     max-width: 25px;
 }
 
+.cropBuySellForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blueButton {
+    background-color: #3F83BF;
+    margin: 0px 3px;
+    padding: 3px;
+    border: 1px solid #131d25;
+}
+
+.blueButton:disabled {
+    background-color: #788ea2;
+}
+
+.blueButton:hover:disabled {
+    background-color: #788ea2;
+}
+
+.blueHover:hover {
+    background-color: #71A8D9;
+}
+
 .greenHover:hover {
     background-color: #A1A621;
 }
-
 
 .redHover:hover {
     background-color: #9D3C50 ;
@@ -143,8 +168,17 @@ legend {
     transform: scale(1.1); 
     }
 
+.tableDiv {
+    padding: 10px 0px;
+    margin: 10px;
+    width: fit-content;
+    border: 2px solid #131d25;
+}
+
 #footer-text {
     margin: auto;
+    width: fit-content;
+    margin-top: 20px;
 }
 
 #cropAdminForms {
@@ -159,24 +193,22 @@ legend {
 
 #cropAdminForms form {
     min-width: 175px;
+    background-color: #71A8D9;
+    border: 2px solid #131d25;
+}
+
+#farmerCropsDiv {
+    background-color: #cacf49;
 }
 
 #cropsTableDiv {
+    background-color: #c5ddf1;
+}
+
+#cropsTable {
     background-color: #c5ddf1;
     padding: 10px 0px;
     margin: 10px;
     width: fit-content;
     border: 2px solid #131d25;
 }
-
-/* #submitButton {
-    height:38px;
-    border: 1px solid #E6B02A !important;
-    border-radius:5px;
-}
-
-#submitButton:hover, #submitButton:active, #submitButton:focus {
-    border: 1px solid #E6B02A !important;
-    box-shadow: 0 0 0 0.2rem #E6B02A !important;
-} */
-

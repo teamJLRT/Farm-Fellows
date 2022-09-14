@@ -12,10 +12,9 @@
         <h3>Friends:</h3>
         <ul th:replace="fragments/friends.html :: ul"></ul>
         <h3 th:text="'Farm Value: ' + ${farmer.totalFarmValue()}"></h3>
-        <div th:insert="fragments/crops.html :: cropsTable"></div>
 
         <section id="buy-sell">
-            <div th:insert="fragments/farmer-crops.html :: table"></div>
+            <div th:insert="fragments/farmer-crops.html :: farmerCropsDiv"></div>
             <div th:insert="fragments/buy-form.html :: table"></div>
         </section>
         <div th:if="${farmer.isAdmin()}" th:insert="fragments/crop-admin.html :: div"></div>
