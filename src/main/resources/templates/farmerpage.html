@@ -8,6 +8,10 @@
     <header th:insert="fragments/header.html :: header"></header>
     <h1 th:text="${otherFarmer.getFullName()} + ' Farm'"></h1>
     <h2 th:text="'Net Worth: ' + ${otherFarmer.totalFarmValue()}"></h2>
+    <form th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
+        <input type="hidden" th:value="${farmer.id}" name="farmerId">
+        <input type="submit" value="Add Friend">
+    </form>
     <table>
         <caption th:text="${otherFarmer.getFullName()} + ' plantings'"></caption>
         <tr>
