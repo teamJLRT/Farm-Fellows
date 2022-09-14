@@ -27,6 +27,11 @@ public class Farmer {
         this.userName = userName;
     }
 
+    public Integer maxBuyQuantity(Crop c){
+        Integer price = c.getSeedPrice();
+        return this.cashOnHand/price;
+    }
+
     public Long getId() {
         return id;
     }

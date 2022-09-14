@@ -35,6 +35,12 @@ public class FarmerCrop {
         this.quantity = quantity;
     }
 
+    public Integer timeRemaining(){
+        LocalDateTime currentTime = LocalDateTime.now();
+        Integer timeBetween = Math.toIntExact(ChronoUnit.SECONDS.between(this.plantedAt, currentTime));
+        return this.crop.getCropGrowTime() - timeBetween;
+    }
+
     public Long getId() {
         return id;
     }
