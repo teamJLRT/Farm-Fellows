@@ -34,6 +34,15 @@ public class Farmer {
         this.userName = userName;
     }
 
+    public boolean isFriend(Farmer f){
+        for(Friend friendship : this.friends){
+            if (friendship.friend.id == f.id){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Integer maxBuyQuantity(Crop c){
         Integer price = c.getSeedPrice();
         return this.cashOnHand/price;
