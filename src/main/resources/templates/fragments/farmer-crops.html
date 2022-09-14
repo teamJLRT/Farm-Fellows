@@ -5,14 +5,16 @@
     <title>Plantings</title>
 </head>
 <body>
+<div id="farmerCropsDiv" class="tableDiv" th:fragment="farmerCropsDiv">
     <table>
-        <caption th:text="${farmer.getFullName()} + 's Crops'"></caption>
+        <caption th:text="${farmer.getFullName()} + '\'s Crops'"></caption>
         <script th:src="@{../js/script.js}"></script>
         <tr>
             <th>Crop</th>
             <th>Quantity</th>
             <th>Planted</th>
             <th>Time Remaining</th>
+            <th>&nbsp;</th>
         </tr>
         <tr th:each="planting : ${plantings}">
             <td th:text="${planting.crop.cropName}"></td>
@@ -20,10 +22,10 @@
             <td th:text="${planting.plantedAt}"></td>
             <td th:id="${planting.id} + 'sellTimer'"></td>
             <td>
-                <form th:action="@{/planting}" th:method="PUT">
+                <form class="cropBuySellForm" th:action="@{/planting}" th:method="PUT">
                     <input type ="number" name="quantity" min="0" th:max="${planting.quantity}">
                     <input type="hidden" th:value="${planting.id}" name="plantingId">
-                    <input type="submit" th:id="${planting.id} + 'sellButton'" value="Sell" disabled>
+                    <input class="blueButton blueHover" type="submit" th:id="${planting.id} + 'sellButton'" value="Sell" disabled>
                 </form>
             </td>
             <script th:inline="javascript">
@@ -35,5 +37,6 @@
             </script>
         </tr>
     </table>
+</div>
 </body>
 </html>
