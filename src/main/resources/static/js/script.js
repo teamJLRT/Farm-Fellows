@@ -6,8 +6,9 @@ function changeTime(id, buttonid, timeLeft){
     function updateTime(){
         elem.innerHTML = time;
         time -= 1;
-        if(time <= 0){
+        if(time < 0){
         buttonElm.disabled = false;
+        elem.style.color = "red";
         }
     }
     setInterval(updateTime, 1000);
