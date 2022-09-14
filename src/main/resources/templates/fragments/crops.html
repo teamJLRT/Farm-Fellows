@@ -7,7 +7,6 @@
 <body>
 <div th:fragment="cropsTable" id="cropsTableDiv">
     <table>
-        <caption>Crop Types, Growth Durations, and Prices</caption>
         <tr>
             <th>Name</th>
             <th>Grow Time</th>
@@ -20,6 +19,7 @@
             <td th:text="${crop.seedPrice}"></td>
             <td th:text="${crop.cropSellPrice}"></td>
         </tr>
+        <caption>Crop Types, Growth Durations, and Prices</caption>
     </table>
 </div>
 </body>

@@ -6,19 +6,32 @@
 </head>
 <body>
     <table>
+        <script th:src="@{../js/script.js}"></script>
         <tr>
             <th>Crop</th>
             <th>Quantity</th>
             <th>Planted</th>
             <th>Time Remaining</th>
         </tr>
-        <tr th:each="planting : farmer.farmerCrops)">
+        <tr th:each="planting : ${farmercrops}">
             <td th:text="${planting.crop.cropName}"></td>
             <td th:text="${planting.quantity}"></td>
-            <td th:text="${#temporals.format(planting.planted, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td th:text="${planting.secondsLeft()}"></td>
-
+            <td th:text="${planting.plantedAt}"></td>
+            <td th:id="${planting.id} + 'sellTimer'"></td>
+            <script th:inline="javascript">
+                id = [[${planting.id}]] + 'sellTimer';
+                timeLeft = [[${planting.timeRemaining()}]]
+                changeTime(id, timeLeft);
+                //to do: button enable based on time remaining
+            </script>
+            <td>
+                <form>
+                    <input name="quantity">
+                    <input type="submit">
+                </form>
+            </td>
         </tr>
+        <caption th:text="${farmer} + 's Crops'"></caption>
     </table>
 </body>
 </html>
