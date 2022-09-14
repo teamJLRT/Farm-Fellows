@@ -4,12 +4,16 @@
 <body>
 <header th:fragment="header">
   <nav>
-    <p th:if="${name}" th:text="'Hi, ' + ${name} + '!'"></p>
-    <div class="navLoginBlock">
-    <p th:if="!${name}">Log in:</p>
-    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/github"><img src="../img/github-logo.png" alt="Log in with GitHub"/></a>
-    <a th:if="!${name}" class="mainNavLink" href="/oauth2/authorization/google"><img src="../img/google-logo.svg" alt="Log in with Google"/></a>
-    <a th:if="${name}" class="mainNavLink" href="/logout">Log Out</a>
+    <div th:if="${name}" class="navBlock">
+      <p th:text="'Hi, ' + ${name} + '!'"></p>
+      <a class="navButton greenHover" href="/farmer">Your farm</a>
+      <a class="navButton greenHover" href="/all-farmers">All farms</a>
+      <a class="navButton redHover" href="/logout">Log Out</a>
+    </div>
+    <div th:if="!${name}" class="navBlock navButton">
+    <p>Log in:</p>
+    <a href="/oauth2/authorization/github"><img class="growHover" src="../img/github-logo.png" alt="Log in with GitHub"/></a>
+    <a href="/oauth2/authorization/google"><img class="growHover" src="../img/google-logo.svg" alt="Log in with Google"/></a>
     </div>
   </nav>
 </header>

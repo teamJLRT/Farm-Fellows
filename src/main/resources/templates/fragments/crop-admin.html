@@ -2,19 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="crop-admin">
-    <h2>Admin Forms:</h2>
-    <form th:action="@{/crops}" th:method="POST">
-        <legend>Add a crop</legend>
-        <label for="newCropName">Name</label>
-        <input type="text" name="newCropName" id="newCropName" />
-        <label for="newCropBuyPrice">Seed Price</label>
-        <input type="text" name="newCropBuyPrice" id="newCropBuyPrice" />
-        <label for="newCropSellPrice">Sell Price</label>
-        <input type="text" name="newCropSellPrice" id="newCropSellPrice" />
-        <label for="newCropGrowTime">Grow time (seconds)</label>
-        <input type="text" name="newCropGrowTime" id="newCropGrowTime" />
-        <input type="submit" value="Add crop">
-    </form>
+<h2>Admin Forms:</h2>
+    <div id="cropAdminForms">
+<form th:action="@{/crops}" th:method="POST">
+    <legend>Add a crop</legend>
+    <label for="newCropName">Name</label>
+    <input type="text" name="newCropName" id="newCropName" required />
+    <label for="newCropBuyPrice">Seed Price</label>
+    <input type="text" name="newCropBuyPrice" id="newCropBuyPrice" required />
+    <label for="newCropSellPrice">Sell Price</label>
+    <input type="text" name="newCropSellPrice" id="newCropSellPrice" required />
+    <label for="newCropGrowTime">Grow time (seconds)</label>
+    <input type="text" name="newCropGrowTime" id="newCropGrowTime" required />
+    <input type="submit" value="Add crop">
+</form>
+
 
     <form th:action="@{/crops}" th:method="PUT">
         <legend>Modify a crop</legend>
@@ -23,7 +25,6 @@
             <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
             </option>
         </select>
-        <legend>Add a crop</legend>
         <label for="editedCropName">Name</label>
         <input type="text" name="editedCropName" id="editedCropName" />
         <label for="editedCropBuyPrice">Buy Price</label>
@@ -36,12 +37,15 @@
     </form>
 
     <form th:action="@{/crops}" th:method="DELETE">
+        <legend>Delete a crop</legend>
         <label for="deleteCropType">Crop</label>
         <select name="deleteCropType" id="deleteCropType">
             <option  th:each="crop : ${cropList}" th:value="${crop.id}" th:text="${crop.cropName}" >
             </option>
         </select>
+        <input type="submit" value="Delete crop" />
     </form>
+    </div>
 </div>
 </body>
 </html>

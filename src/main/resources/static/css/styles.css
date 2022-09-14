@@ -15,11 +15,16 @@ body {
 
 main {
     padding: 25px;
+    margin-bottom: 50px;
+}
+
+main > * {
+    margin: 10px 5px;
 }
 
 footer {
     background-color:#582618;
-    min-height: 50px;
+    height: 50px;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -35,27 +40,35 @@ nav {
     min-height: 50px;
 }
 
+nav * {
+    color: #131d25;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
 h1 {
-    color: #121700;
-    /* text-shadow: 2px 2px #E63E17; */
     font-size: 5em;
     padding: 15px;
 }
 
 h2 {
     font-weight: bold;
-    color: #121700;
     font-size: 3em;
     padding: 15px;
 }
 
+h3 {
+    font-size: 1.5em;
+    padding: 7px;
+}
+
 form {
     background-color: #71A8D9;
-    border-radius: 0px 10px;
+    border: 2px solid #131d25;
     color: #131d25;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 form * {
@@ -63,29 +76,97 @@ form * {
     margin: 5px 0px;
 }
 
-.navLoginBlock {
+table {
+    text-align: center;
+}
+
+table * {
+    padding:3px;
+}
+
+table caption {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+table tr th {
+    border-bottom: 2px solid #131d25;
+    font-weight:bold;
+    min-width: 125px;
+}
+
+table tr td {
+    border-bottom: 1px solid #131d25;
+}
+
+select {
+    width: 100%;
+}
+
+legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.navButton {
     background-color: #c5ddf1;
-    border-radius: 5px;
-    margin: 3px;
     padding: 3px;
+    margin: 3px;
+}
+
+
+.navBlock {
     display: flex;
     align-items: center;
 }
 
-.navLoginBlock img {
+.navBlock img {
     max-width: 25px;
 }
 
-.navLoginBlock * {
-    color: #131d25;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-decoration: none;
-    padding: 2px 5px;
+.greenHover:hover {
+    background-color: #A1A621;
 }
+
+
+.redHover:hover {
+    background-color: #9D3C50 ;
+}
+
+/* https://travis.media/how-to-make-an-item-grow-on-hover-with-css/ */
+.growHover { 
+    transition: all .2s ease-in-out; 
+    }
+    
+.growHover:hover { 
+    transform: scale(1.1); 
+    }
 
 #footer-text {
     margin: auto;
+}
+
+#cropAdminForms {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#cropAdminForms > * {
+    margin: 10px;
+    padding: 10px;
+}
+
+#cropAdminForms form {
+    min-width: 175px;
+}
+
+#cropsTableDiv {
+    background-color: #c5ddf1;
+    padding: 10px 0px;
+    margin: 10px;
+    width: fit-content;
+    border: 2px solid #131d25;
 }
 
 /* #submitButton {

@@ -5,16 +5,24 @@
 </head>
 <body>
     <header th:insert="fragments/header.html :: header"></header>
+    <main>
     <section th:if="${farmer}" id="farmer-home">
         <h2 th:text="${farmer.getFullName()}"></h2>
         <h3 th:text="'Money: ' + ${farmer.getCashOnHand()}"></h3>
+<<<<<<< HEAD
         <table th:insert="fragments/crops.html :: table"></table>
         <section id="buy-sell">
             <table th:insert="fragments/farmer-crops.html :: table"></table>
             <table th:insert="fragments/buy-form.html :: table"></table>
         </section>
+=======
+        <div th:insert="fragments/crops.html :: cropsTable"></div>
+        <form id="buy-form"></form>
+        <form id="sell-form"></form>
+>>>>>>> 9bf5e1db559f52b218ee36b0672a94d369c035ac
         <div th:if="${farmer.isAdmin()}" th:insert="fragments/crop-admin.html :: div"></div>
     </section>
+    </main>
     <footer th:insert="fragments/footer.html :: footer"></footer>
 </body>
 </html>
