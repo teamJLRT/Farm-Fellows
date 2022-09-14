@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -60,7 +62,7 @@ public class FarmerController {
 
             Farmer f = farmerRepository.findByuserName(userName);
             List<Farmer> allFarmers = farmerRepository.findAll();
-
+            Collections.sort(allFarmers);
             m.addAttribute("name", f.getFullName());
             m.addAttribute("farmerList", allFarmers);
         }
@@ -94,8 +96,8 @@ public class FarmerController {
     @PostMapping("/{id}/addcomment")
     public RedirectView addComment(@AuthenticationPrincipal OAuth2User principal, Long farmerId, String text, @PathVariable Long id){
         if(principal != null){
-            Farmer receivingComment = farmerRepository.findById(farmerId).orElseThrow();
-            Farmer makingComment = farmerRepository.findById(id).orElseThrow();
+            Farmer receivingComment = farmerRepository.findById(id).orElseThrow();
+            Farmer makingComment = farmerRepository.findById(farmerId).orElseThrow();
             Comment comment = new Comment(receivingComment, makingComment.getFullName(), text);
             commentRepository.save(comment);
         }
