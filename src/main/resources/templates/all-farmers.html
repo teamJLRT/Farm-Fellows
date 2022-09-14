@@ -12,10 +12,12 @@
             <tr>
                 <th>Farmer</th>
                 <th>Farm Value</th>
+                <th>Their Farm</th>
             </tr>
             <tr th:each="farmer : ${farmerList}">
                 <td th:text="${farmer.fullName}"></td>
                 <td th:text="${farmer.totalFarmValue}"></td>
+                <td><a th:href="'/' + ${farmer.id}">Link</a></td>
             </tr>
             <caption>All Farmers</caption>
         </table>
