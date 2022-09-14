@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -50,6 +51,17 @@ public class CropController {
                 c.setCropGrowTime(editedCropGrowTime);
                 cropRepository.save(c);
             }
+        }
+        return new RedirectView("/");
+    }
+
+    @DeleteMapping("/crops")
+    public RedirectView deleteCrop(@AuthenticationPrincipal OAuth2User principal, Long deleteCropType){
+        String userName = principal.getAttribute("name") + principal.getName();
+        Farmer f = farmerRepository.findByuserName(userName);
+        if (f != null && f.isAdmin()){
+            Crop c = cropRepository.findById(deleteCropType).orElseThrow();
+            cropRepository.delete(c);
         }
         return new RedirectView("/");
     }

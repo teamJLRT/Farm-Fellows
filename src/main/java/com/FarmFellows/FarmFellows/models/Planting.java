@@ -1,13 +1,11 @@
 package com.FarmFellows.FarmFellows.models;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @Entity
-public class FarmerCrop {
+public class Planting {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +23,10 @@ public class FarmerCrop {
 
     int quantity;
 
-    protected FarmerCrop() {
+    protected Planting() {
     }
 
-    public FarmerCrop(Farmer farmer, Crop crop, LocalDateTime plantedAt, int quantity) {
+    public Planting(Farmer farmer, Crop crop, LocalDateTime plantedAt, int quantity) {
         this.farmer = farmer;
         this.crop = crop;
         this.plantedAt = plantedAt;

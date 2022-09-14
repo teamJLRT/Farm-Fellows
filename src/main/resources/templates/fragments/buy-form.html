@@ -6,6 +6,12 @@
 </head>
 <body>
     <table>
+        <tr>
+            <th>Crop Name</th>
+            <th>Buy Price</th>
+            <th>Grow Time (Seconds)</th>
+            <th>Buy Form</th>
+        </tr>
         <tr th:each="crop : ${cropList}">
             <td th:text="'Name: ' + ${crop.cropName}"></td>
             <td th:text="'Price: ' + ${crop.seedPrice}"></td>
