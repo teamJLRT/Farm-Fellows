@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Farmer {
+public class Farmer implements Comparable<Farmer>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -139,5 +139,10 @@ public class Farmer {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public int compareTo(Farmer farmer) {
+        return this.cashOnHand - farmer.cashOnHand;
     }
 }
