@@ -75,6 +75,7 @@ public class FarmerController {
             String userName = principal.getAttribute("name") + principal.getName();
             Farmer f = farmerRepository.findByuserName(userName);
             m.addAttribute("farmer", f);
+            m.addAttribute("name", f.getFullName());
         }
         Farmer otherFarmer = farmerRepository.findById(id).orElseThrow();
         m.addAttribute("otherFarmer", otherFarmer);
