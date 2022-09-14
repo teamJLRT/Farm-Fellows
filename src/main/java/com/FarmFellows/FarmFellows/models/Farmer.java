@@ -1,6 +1,7 @@
 package com.FarmFellows.FarmFellows.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,6 +25,9 @@ public class Farmer {
 
     @OneToMany(mappedBy = "friend")
     Set<Friend> friendOf;
+
+    @OneToMany(mappedBy = "f")
+    List<Comment> comments;
 
     protected Farmer() {};
 
@@ -127,5 +131,13 @@ public class Farmer {
 
     public void setFriendOf(Set<Friend> friendOf) {
         this.friendOf = friendOf;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
