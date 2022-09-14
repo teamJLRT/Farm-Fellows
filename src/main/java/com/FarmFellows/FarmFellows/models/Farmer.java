@@ -18,7 +18,15 @@ public class Farmer {
 
     @OneToMany(mappedBy = "farmer")
     Set<Planting> crops;
+
+    @OneToMany(mappedBy = "farmer")
+    Set<Friend> friends;
+
+    @OneToMany(mappedBy = "friend")
+    Set<Friend> friendOf;
+
     protected Farmer() {};
+
     public Farmer(String fullName, String userName) {
         this.fullName = fullName;
         this.cashOnHand = 50;
@@ -94,5 +102,21 @@ public class Farmer {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public Set<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Friend> friends) {
+        this.friends = friends;
+    }
+
+    public Set<Friend> getFriendOf() {
+        return friendOf;
+    }
+
+    public void setFriendOf(Set<Friend> friendOf) {
+        this.friendOf = friendOf;
     }
 }

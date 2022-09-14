@@ -9,6 +9,8 @@
     <section th:if="${farmer}" id="farmer-home">
         <h2 th:text="${farmer.getFullName()}"></h2>
         <h3 th:text="'Money: ' + ${farmer.getCashOnHand()}"></h3>
+        <h3>Friends:</h3>
+        <ul th:replace="fragments/friends.html :: ul"></ul>
         <div th:insert="fragments/crops.html :: table"></div>
         <section id="buy-sell">
             <div th:insert="fragments/farmer-crops.html :: table"></div>

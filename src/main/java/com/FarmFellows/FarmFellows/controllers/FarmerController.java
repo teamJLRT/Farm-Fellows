@@ -2,9 +2,11 @@ package com.FarmFellows.FarmFellows.controllers;
 
 import com.FarmFellows.FarmFellows.models.Crop;
 import com.FarmFellows.FarmFellows.models.Farmer;
+import com.FarmFellows.FarmFellows.models.Friend;
 import com.FarmFellows.FarmFellows.models.Planting;
 import com.FarmFellows.FarmFellows.repositories.CropRepository;
 import com.FarmFellows.FarmFellows.repositories.FarmerRepository;
+import com.FarmFellows.FarmFellows.repositories.FriendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -12,7 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +28,9 @@ public class FarmerController {
     FarmerRepository farmerRepository;
     @Autowired
     CropRepository cropRepository;
+
+    @Autowired
+    FriendRepository friendRepository;
 
     @GetMapping("/")
     public String OAuthLogin(@AuthenticationPrincipal OAuth2User principal, Model m){
@@ -71,4 +79,17 @@ public class FarmerController {
         m.addAttribute("otherFarmer", otherFarmer);
         return "farmerpage";
     }
+
+    @PostMapping("/{id}/addfriend")
+    public RedirectView addFriend(@AuthenticationPrincipal OAuth2User principal, Long farmerId, @PathVariable Long id){
+        if (principal != null) {
+            Farmer farmer = farmerRepository.findById(farmerId).orElseThrow();
+            Farmer otherFarmer = farmerRepository.findById(id).orElseThrow();
+            LocalDateTime currentTime = LocalDateTime.now();
+            Friend friendship = new Friend(farmer, otherFarmer, currentTime);
+            friendRepository.save(friendship);
+        }
+        return new RedirectView("/" + id);
+    }
+
 }
