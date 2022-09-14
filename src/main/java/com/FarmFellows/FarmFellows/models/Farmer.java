@@ -143,6 +143,6 @@ public class Farmer implements Comparable<Farmer>{
 
     @Override
     public int compareTo(Farmer farmer) {
-        return this.totalFarmValue() - farmer.totalFarmValue();
+        return farmer.totalFarmValue() - this.totalFarmValue();
     }
 }
