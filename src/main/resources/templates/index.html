@@ -11,7 +11,9 @@
         <h3 th:text="'Money: ' + ${farmer.getCashOnHand()}"></h3>
         <h3>Friends:</h3>
         <ul th:replace="fragments/friends.html :: ul"></ul>
-        <div th:insert="fragments/crops.html :: table"></div>
+        <h3 th:text="'Farm Value: ' + ${farmer.totalFarmValue()}"></h3>
+        <div th:insert="fragments/crops.html :: cropsTable"></div>
+
         <section id="buy-sell">
             <div th:insert="fragments/farmer-crops.html :: table"></div>
             <div th:insert="fragments/buy-form.html :: table"></div>
