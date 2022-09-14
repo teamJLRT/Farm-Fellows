@@ -8,9 +8,14 @@
     <header th:insert="fragments/header.html :: header"></header>
     <h1 th:text="${otherFarmer.getFullName()} + ' Farm'"></h1>
     <h2 th:text="'Net Worth: ' + ${otherFarmer.totalFarmValue()}"></h2>
-    <form th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
+    <form th:if="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
         <input type="hidden" th:value="${farmer.id}" name="farmerId">
         <input type="submit" value="Add Friend">
+    </form>
+    <form th:unless="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addcomment'" method="POST">
+        <textarea name="text"></textarea>
+        <input type="hidden"th:value="${farmer.id}" name="farmerId">
+        <input type="submit" value="Submit Comment">
     </form>
     <table>
         <caption th:text="${otherFarmer.getFullName()} + ' plantings'"></caption>
