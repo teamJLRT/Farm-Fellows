@@ -19,7 +19,7 @@
         <tr th:each="planting : ${plantings}">
             <td th:text="${planting.crop.cropName}"></td>
             <td th:text="${planting.quantity}"></td>
-            <td th:text="${planting.plantedAt}"></td>
+            <td th:text="${#temporals.format(planting.plantedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:id="${planting.id} + 'sellTimer'"></td>
             <td>
                 <form class="cropBuySellForm" th:action="@{/planting}" th:method="PUT">

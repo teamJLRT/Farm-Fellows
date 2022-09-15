@@ -36,7 +36,7 @@
         <tr th:each="planting : ${otherFarmer.crops}">
             <td th:text="${planting.crop.cropName}"></td>
             <td th:text="${planting.quantity}"></td>
-            <td th:text="${planting.plantedAt}"></td>
+            <td th:text="${#temporals.format(planting.plantedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
     </table>
 </body>
 </html>
