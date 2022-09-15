@@ -23,7 +23,7 @@
             <td th:id="${planting.id} + 'sellTimer'"></td>
             <td>
                 <form class="cropBuySellForm" th:action="@{/planting}" th:method="PUT">
-                    <input type ="number" name="quantity" min="0" th:max="${planting.quantity}">
+                    <input type ="number" name="quantity" min="0" th:max="${planting.quantity}" required>
                     <input type="hidden" th:value="${planting.id}" name="plantingId">
                     <input class="blueButton blueHover" type="submit" th:id="${planting.id} + 'sellButton'" value="Sell" disabled>
                 </form>
