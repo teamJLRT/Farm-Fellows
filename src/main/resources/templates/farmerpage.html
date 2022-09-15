@@ -6,7 +6,7 @@
 </head>
 <body>
     <header th:insert="fragments/header.html :: header"></header>
-    <h1 th:text="${otherFarmer.getFullName()} + ' Farm'"></h1>
+    <h1 th:text="${otherFarmer.getDisplayName()} + '\'s Farm'"></h1>
     <h2 th:text="'Net Worth: ' + ${otherFarmer.totalFarmValue()}"></h2>
     <form th:if="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
         <input type="hidden" th:value="${farmer.id}" name="farmerId">
@@ -18,7 +18,7 @@
         <input type="submit" value="Submit Comment">
     </form>
     <section class="comments" >
-        <h2 th:text="${otherFarmer.fullName} + '`s received comments'"></h2>
+        <h2 th:text="${otherFarmer.displayName} + '\'s received comments'"></h2>
         <ul th:each="comment : ${otherFarmer.comments}">
             <li>
                 <p  th:text="${comment.text}"></p>
@@ -27,7 +27,7 @@
         </ul>
     </section>
     <table>
-        <caption th:text="${otherFarmer.getFullName()} + ' plantings'"></caption>
+        <caption th:text="${otherFarmer.getDisplayName()} + '\'s plantings'"></caption>
         <tr>
             <th>Crop</th>
             <th>Quantity</th>

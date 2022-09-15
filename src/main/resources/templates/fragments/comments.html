@@ -6,7 +6,7 @@
 </head>
 <body>
     <section class="comments" >
-        <h2 th:text="${farmer.fullName} + '`s received comments'"></h2>
+        <h2 th:text="${farmer.displayName} + '\'s received comments'"></h2>
         <ul th:each="comment : ${farmer.comments}">
             <li>
                 <p  th:text="${comment.text}"></p>

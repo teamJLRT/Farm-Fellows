@@ -14,6 +14,7 @@ public class Farmer implements Comparable<Farmer>{
     private String fullName;
     private String userName;
     private String profilePicUrl;
+    private String displayName;
     private int cashOnHand;
     private boolean admin;
 
@@ -36,6 +37,7 @@ public class Farmer implements Comparable<Farmer>{
         this.cashOnHand = 50;
         this.profilePicUrl = "../img/default.png";
         this.userName = userName;
+        this.displayName = fullName;
     }
 
     public boolean isFriend(Farmer f){
@@ -139,6 +141,14 @@ public class Farmer implements Comparable<Farmer>{
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     @Override

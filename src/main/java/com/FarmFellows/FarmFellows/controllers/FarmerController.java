@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDateTime;
@@ -49,6 +50,7 @@ public class FarmerController {
             m.addAttribute("cropList", crops);
             m.addAttribute("name", f.getFullName());
             m.addAttribute("farmer", f);
+            m.addAttribute("farmerId",f.getId());
         }
 
         return "index";
@@ -65,6 +67,7 @@ public class FarmerController {
             Collections.sort(allFarmers);
             m.addAttribute("name", f.getFullName());
             m.addAttribute("farmerList", allFarmers);
+            m.addAttribute("farmer",f);
         }
         return "all-farmers";
     }
@@ -102,6 +105,17 @@ public class FarmerController {
             Farmer makingComment = farmerRepository.findById(farmerId).orElseThrow();
             Comment comment = new Comment(receivingComment, makingComment.getFullName(), text);
             commentRepository.save(comment);
+        }
+        return new RedirectView("/" + id);
+    }
+
+    @PutMapping("/{id}/displayname")
+    public RedirectView changeDisplayName(@AuthenticationPrincipal OAuth2User principal, String newDisplayName, @PathVariable Long id){
+        if (principal != null){
+            String userName = principal.getAttribute("name") + principal.getName();
+            Farmer f = farmerRepository.findByuserName(userName);
+            f.setDisplayName(newDisplayName);
+            farmerRepository.save(f);
         }
         return new RedirectView("/" + id);
     }

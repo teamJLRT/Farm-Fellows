@@ -5,7 +5,7 @@
 <header th:fragment="header">
   <nav>
     <div th:if="${name}" class="navBlock">
-      <p th:text="'Hi, ' + ${name} + '!'"></p>
+      <p th:text="'Hi, ' + ${farmer.getDisplayName()} + '!'"></p>
       <a class="navButton greenHover" href="/">Your farm</a>
       <a class="navButton greenHover" href="/all-farmers">All farms</a>
       <a class="navButton redHover" href="/logout">Log Out</a>
