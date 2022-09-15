@@ -16,7 +16,7 @@
 
         <section id="buy-sell">
             <div th:insert="fragments/farmer-crops.html :: farmerCropsDiv"></div>
-            <div th:insert="fragments/buy-form.html :: table"></div>
+            <div th:insert="fragments/buy-form.html :: buyFormDiv"></div>
         </section>
         <div th:if="${farmer.isAdmin()}" th:insert="fragments/crop-admin.html :: div"></div>
     </section>
