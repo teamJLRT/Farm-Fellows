@@ -15,7 +15,8 @@ body {
 
 main {
     padding: 25px;
-    margin-bottom: 50px;
+    display: block;
+    margin: 0px auto 50px auto;
 }
 
 main > * {
@@ -91,7 +92,7 @@ table caption {
 table tr th {
     border-bottom: 2px solid #131d25;
     font-weight:bold;
-    min-width: 125px;
+    min-width: 85px;
 }
 
 table tr td {
@@ -169,7 +170,6 @@ input[type=number] {
     }
 
 .tableDiv {
-    padding: 10px 0px;
     margin: 10px;
     width: fit-content;
     border: 2px solid #131d25;
@@ -179,6 +179,26 @@ input[type=number] {
     margin: auto;
     width: fit-content;
     margin-top: 20px;
+}
+
+#farmer-home {
+    width: fit-content;
+    margin: auto;
+}
+
+#info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: fit-content;
+    margin: auto;
+}
+
+#farmer-info {
+    background-color: #c5ddf1;
+    padding: 10px;
+    border: 2px solid #131d25;
+    color: #131d25;
 }
 
 #cropAdminForms {
@@ -201,14 +221,11 @@ input[type=number] {
     background-color: #cacf49;
 }
 
-#cropsTableDiv {
-    background-color: #c5ddf1;
-}
-
 #cropsTable {
-    background-color: #c5ddf1;
+    background-color: #7a4611;
+    color: #c5ddf1;
     padding: 10px 0px;
     margin: 10px;
-    width: fit-content;
+    width: 670px;
     border: 2px solid #131d25;
 }

@@ -6,10 +6,10 @@
 </head>
 <body>
     <section class="comments" >
-        <h2 th:text="${farmer.displayName} + '\'s received comments'"></h2>
+        <h3 th:text="'Comments'"></h3>
         <ul th:each="comment : ${farmer.comments}">
             <li>
-                <p  th:text="${comment.text}"></p>
+                <p th:text="${comment.text}"></p>
                 <h5 th:text="'Author: ' + ${comment.commenterName}"></h5>
             </li>
         </ul>
