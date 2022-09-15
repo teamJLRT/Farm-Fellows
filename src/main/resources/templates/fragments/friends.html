@@ -5,10 +5,13 @@
     <title>Friends</title>
 </head>
 <body>
+    <div id="friendsListDiv" th:fragment="friendsListDiv">
+    <p class="infoLabel">Friends</p>
     <ul th:each="friendship : ${farmer.friends}">
-        <li>
-            <a th:text="${friendship.friend.getDisplayName()}" th:href="'/' + ${friendship.friend.id}"></a>
+        <li class="friendsList">
+            <a class="friendLink" th:text="${friendship.friend.getDisplayName()}" th:href="'/' + ${friendship.friend.id}"></a>
         </li>
     </ul>
+    </div>
 </body>
 </html>

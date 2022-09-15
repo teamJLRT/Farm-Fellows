@@ -5,38 +5,47 @@
     <title>Title</title>
 </head>
 <body>
-    <header th:insert="fragments/header.html :: header"></header>
-    <h1 th:text="${otherFarmer.getDisplayName()} + '\'s Farm'"></h1>
-    <h2 th:text="'Net Worth: ' + ${otherFarmer.totalFarmValue()}"></h2>
-    <form th:if="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
-        <input type="hidden" th:value="${farmer.id}" name="farmerId">
-        <input type="submit" value="Add Friend">
-    </form>
-    <form th:unless="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addcomment'" method="POST">
-        <textarea name="text"></textarea>
-        <input type="hidden"th:value="${farmer.id}" name="farmerId">
-        <input type="submit" value="Submit Comment">
-    </form>
-    <section class="comments" >
-        <h2 th:text="${otherFarmer.displayName} + '\'s received comments'"></h2>
-        <ul th:each="comment : ${otherFarmer.comments}">
-            <li>
-                <p  th:text="${comment.text}"></p>
-                <h5 th:text="'Author: ' + ${comment.commenterName}"></h5>
-            </li>
-        </ul>
-    </section>
-    <table>
-        <caption th:text="${otherFarmer.getDisplayName()} + '\'s plantings'"></caption>
-        <tr>
-            <th>Crop</th>
-            <th>Quantity</th>
-            <th>Planted</th>
-        </tr>
-        <tr th:each="planting : ${otherFarmer.crops}">
-            <td th:text="${planting.crop.cropName}"></td>
-            <td th:text="${planting.quantity}"></td>
-            <td th:text="${#temporals.format(planting.plantedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
-    </table>
+<header th:insert="fragments/header.html :: header"></header>
+<main>
+    <div  class="farmer-home">
+
+    <h2 th:text="${otherFarmer.getDisplayName()} + '\'s Farm'"></h2>
+    <h3 th:text="'Farm Value: ' + ${otherFarmer.totalFarmValue()}"></h3>
+
+    <div class="info">
+            <div class="farm-info tableDiv farmerCropsDiv">
+            <table>
+                <caption th:text="${otherFarmer.getDisplayName()} + '\'s crops'"></caption>
+                <tr>
+                    <th>Crop</th>
+                    <th>Quantity</th>
+                    <th>Planted</th>
+                </tr>
+                <tr th:each="planting : ${otherFarmer.crops}">
+                    <td th:text="${planting.crop.cropName}"></td>
+                    <td th:text="${planting.quantity}"></td>
+                    <td th:text="${#temporals.format(planting.plantedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </table>
+        </div>
+        <div class="farmer-info">
+
+            <section th:replace="fragments/comments.html :: section"></section>
+            <form th:unless="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addcomment'" method="POST">
+                <textarea name="text"></textarea>
+                <input type="hidden"th:value="${farmer.id}" name="farmerId">
+                <input class="blueButton blueHover" type="submit" value="Submit Comment">
+            </form>
+            <form th:if="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addfriend'" method="POST">
+                <input type="hidden" th:value="${farmer.id}" name="farmerId">
+                <input class="blueButton blueHover" type="submit" value="Add Friend">
+            </form>
+        </div>
+    </div>
+    </div>
+
+
+
+</main>
+
 </body>
 </html>

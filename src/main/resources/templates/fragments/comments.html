@@ -6,11 +6,11 @@
 </head>
 <body>
     <section class="comments" >
-        <h3 th:text="'Comments'"></h3>
+        <p class="infoLabel" th:text="'Comments'"></p>
         <ul th:each="comment : ${farmer.comments}">
             <li>
-                <p th:text="${comment.text}"></p>
-                <h5 th:text="'Author: ' + ${comment.commenterName}"></h5>
+                <p class="commentBody" th:text="${comment.text}"></p>
+                <p class="commentFrom" th:text="'&ndash; ' + ${comment.commenterName}"></p>
             </li>
         </ul>
     </section>
