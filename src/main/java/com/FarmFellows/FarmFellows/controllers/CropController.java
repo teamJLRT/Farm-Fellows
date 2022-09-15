@@ -2,8 +2,10 @@ package com.FarmFellows.FarmFellows.controllers;
 
 import com.FarmFellows.FarmFellows.models.Crop;
 import com.FarmFellows.FarmFellows.models.Farmer;
+import com.FarmFellows.FarmFellows.models.Planting;
 import com.FarmFellows.FarmFellows.repositories.CropRepository;
 import com.FarmFellows.FarmFellows.repositories.FarmerRepository;
+import com.FarmFellows.FarmFellows.repositories.PlantingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +29,9 @@ public class CropController {
     @Autowired
     FarmerRepository farmerRepository;
 
+    @Autowired
+    PlantingRepository plantingRepository;
+
 
     @PostMapping("/crops")
     public RedirectView addCrop(@AuthenticationPrincipal OAuth2User principal, String newCropName, Integer newCropBuyPrice, Integer newCropSellPrice, Integer newCropGrowTime){
@@ -34,6 +40,19 @@ public class CropController {
         if (f != null && f.isAdmin()){
             Crop newCrop = new Crop(newCropName, newCropBuyPrice, newCropSellPrice, newCropGrowTime);
             cropRepository.save(newCrop);
+        }
+        return new RedirectView("/");
+    }
+
+    @PostMapping("/useboost")
+    public RedirectView useBoost(Long plantingId){
+        Planting p = plantingRepository.findById(plantingId).orElseThrow();
+        if (p.getFarmer().isDailyBoost()){
+            LocalDateTime newPlantingTime = p.getPlantedAt().minusSeconds(p.getCrop().getCropGrowTime());
+            p.setPlantedAt(newPlantingTime);
+            plantingRepository.save(p);
+            p.getFarmer().setDailyBoost(false);
+            farmerRepository.save(p.getFarmer());
         }
         return new RedirectView("/");
     }
