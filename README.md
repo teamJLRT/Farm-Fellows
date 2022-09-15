@@ -172,8 +172,11 @@ Present a game where you are able to view (through plain text) the state of crop
 
 
 Step 1: Navigate to https://github.com/teamJLRT/Farm-Fellows and clone the repo
+
 Step 2: Open the newly cloned material in IntelliJ IDE
+
 Step 3: Navigate through the data structure from src>main>resources>application.properties then comment in ` spring.config.import=file:env.properties`
+
 Step 4: Create an env.properties file on the root directory which will store your login Credentials for GitHub and Google OAuth as well as Database credentials
 
 SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/`<Your database name>`  replace information in <> with your information DO NOT INCLUDE <>
