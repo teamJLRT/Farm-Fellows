@@ -29,7 +29,15 @@
         </div>
         <div class="farmer-info">
 
-            <section th:replace="fragments/comments.html :: section"></section>
+            <section class="comments" >
+                <p class="infoLabel" th:text="'Comments'"></p>
+                <ul th:each="comment : ${otherFarmer.comments}">
+                    <li>
+                        <p class="commentBody" th:text="${comment.text}"></p>
+                        <p class="commentFrom" th:text="'&ndash; ' + ${comment.commenterName}"></p>
+                    </li>
+                </ul>
+            </section>
             <form th:unless="${!farmer.isFriend(otherFarmer)}" th:action="'/'+ ${otherFarmer.id} + '/addcomment'" method="POST">
                 <textarea name="text"></textarea>
                 <input type="hidden"th:value="${farmer.id}" name="farmerId">
