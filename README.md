@@ -180,7 +180,8 @@ Present a game where you are able to view (through plain text) the state of crop
 **Step 4:** Create an env.properties file on the root directory which will store your login Credentials for GitHub and Google OAuth as well as Database credentials.
 Your env.properties folder should mirror the following:
 
-SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/`<Your database name>`  replace information in <> with your information DO NOT INCLUDE <>
+SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/`<Your database name>`  
+replace information in <> with your information DO NOT INCLUDE <>
 
 SPRING_DATABASE_USERNAME=Youruserinfo
 
