@@ -15,7 +15,8 @@ body {
 
 main {
     padding: 25px;
-    margin-bottom: 50px;
+    display: block;
+    margin: 0px auto 50px auto;
 }
 
 main > * {
@@ -23,13 +24,14 @@ main > * {
 }
 
 footer {
-    background-color:#582618;
+    background-color:#7a4611;
     height: 50px;
     width: 100%;
     position: fixed;
     bottom: 0;
     color:#c5ddf1;
     font-weight: bold;
+    border-top: 2px solid #392109;
 }
 
 nav {
@@ -91,7 +93,7 @@ table caption {
 table tr th {
     border-bottom: 2px solid #131d25;
     font-weight:bold;
-    min-width: 125px;
+    min-width: 85px;
 }
 
 table tr td {
@@ -169,10 +171,59 @@ input[type=number] {
     }
 
 .tableDiv {
-    padding: 10px 0px;
     margin: 10px;
     width: fit-content;
     border: 2px solid #131d25;
+}
+
+.farmer-home {
+    width: fit-content;
+    margin: auto;
+}
+
+.friendLink {
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.friendLink:hover {
+    color: #3F83BF;
+}
+
+.friendLink:visited {
+    color: #131d25;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: fit-content;
+    margin: auto;
+}
+
+.farmer-info {
+    background-color: #c5ddf1;
+    padding: 10px;
+    border: 2px solid #131d25;
+    margin: 10px;
+    color: #131d25;
+    min-width: 190px;
+}
+
+.infoLabel {
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.comments ul li {
+    margin: 0px 0px 7px 10px;
+
+}
+
+.commentFrom {
+    font-style: italic;
 }
 
 #footer-text {
@@ -197,17 +248,13 @@ input[type=number] {
     border: 2px solid #131d25;
 }
 
-#farmerCropsDiv {
+.farmerCropsDiv {
     background-color: #cacf49;
 }
 
-#cropsTableDiv {
-    background-color: #c5ddf1;
-}
-
-#cropsTable {
-    background-color: #c5ddf1;
-    padding: 10px 0px;
+.cropsTable {
+    background-color: #7a4611;
+    color: white;
     margin: 10px;
     width: fit-content;
     border: 2px solid #131d25;

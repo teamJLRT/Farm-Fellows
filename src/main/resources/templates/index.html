@@ -6,21 +6,25 @@
 <body>
     <header th:insert="fragments/header.html :: header"></header>
     <main>
-    <section th:if="${farmer}" id="farmer-home">
-        <h2 th:text="${farmer.getDisplayName()}"></h2>
-        <div th:insert="fragments/display-name.html :: displayNameFormDiv"></div>
+    <div th:if="${farmer}" class="farmer-home">
+        <h2 th:text="'Hi, ' + ${farmer.getDisplayName()} + '!'"></h2>
         <h3 th:text="'Money: ' + ${farmer.getCashOnHand()}"></h3>
-        <h3>Friends:</h3>
-        <ul th:replace="fragments/friends.html :: ul"></ul>
-        <section th:replace="fragments/comments.html :: section"></section>
         <h3 th:text="'Farm Value: ' + ${farmer.totalFarmValue()}"></h3>
-
-        <section id="buy-sell">
-            <div th:insert="fragments/farmer-crops.html :: farmerCropsDiv"></div>
-            <div th:insert="fragments/buy-form.html :: buyFormDiv"></div>
-        </section>
+        <div class="info">
+        <div class="farm-info">
+            <section id="buy-sell">
+                <div th:insert="fragments/farmer-crops.html :: farmerCropsDiv"></div>
+                <div th:insert="fragments/buy-form.html :: buyFormDiv"></div>
+            </section>
+        </div>
+        <div class="farmer-info">
+            <div th:replace="fragments/friends.html :: friendsListDiv"></div>
+            <section th:replace="fragments/comments.html :: section"></section>
+            <div th:insert="fragments/display-name.html :: displayNameFormDiv"></div>
+        </div>
+        </div>
         <div th:if="${farmer.isAdmin()}" th:insert="fragments/crop-admin.html :: div"></div>
-    </section>
+    </div>
     </main>
     <footer th:insert="fragments/footer.html :: footer"></footer>
 

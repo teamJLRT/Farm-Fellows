@@ -12,7 +12,6 @@
             <tr>
                 <th>Farmer</th>
                 <th>Farm Value</th>
-                <th>Their Farm</th>
             </tr>
             <tr th:each="farmer : ${farmerList}">
                 <td><a th:href="'/' + ${farmer.id}" th:text="${farmer.displayName}"></a></td>

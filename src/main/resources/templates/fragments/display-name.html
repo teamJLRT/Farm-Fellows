@@ -4,9 +4,9 @@
 <body>
 <div id="displayNameFormDiv" th:fragment="displayNameFormDiv">
   <form id="displayNameForm" th:action="${farmer.getId() + '/displayname'}" th:method="PUT">
-    <label for="newDisplayName">Change display name:</label>
+    <label class="infoLabel" for="newDisplayName">Change display name</label>
     <input type="text" name="newDisplayName" id="newDisplayName" />
-    <input type="submit" value="Update" />
+    <input class="blueButton blueHover" type="submit" value="Update" />
   </form>
 </div>
 </body>
