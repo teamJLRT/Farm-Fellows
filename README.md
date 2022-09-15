@@ -162,3 +162,35 @@ Present a game where you are able to view (through plain text) the state of crop
 ## Domain Model & Database Schema
 
 ![Farm Fellows Domain Model & Database Schema](./images/FarmFellows-domain-model-db-schema.png)
+
+# Tutorial for setup
+
+## What you will need first
+- you will need to create pgadmin account tutorial found [here](https://www.pgadmin.org/docs/pgadmin4/development/getting_started.html)
+- Google OAuth Account tutorial found [here](https://developers.google.com/identity/sign-in/web/sign-in)
+- github OAuth Account found [here](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+
+
+Step 1: Navigate to https://github.com/teamJLRT/Farm-Fellows and clone the repo
+Step 2: Open the newly cloned material in IntelliJ IDE
+Step 3: Navigate through the data structure from src>main>resources>application.properties then comment in ` spring.config.import=file:env.properties`
+Step 4: Create an env.properties file on the root directory which will store your login Credentials for GitHub and Google OAuth as well as Database credentials
+
+SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/`<Your database name>`  replace information in <> with your information DO NOT INCLUDE <>
+
+SPRING_DATABASE_USERNAME=Youruserinfo
+
+SPRING_DATABASE_PASSWORD=yourpassword
+
+GH_CLIENT_ID=info provided in gitub OAuth sign up
+
+GH_CLIENT_SECRET=info provided by github OAuth signup
+
+GOOGLE_CLIENT_ID=google ID provided during OAUth signup
+
+GOOGLE_CLIENT_SECRET=client secret provided during OAuth signup
+
+Step 5: navigate to FarmFellowsApplication
+Src>main>java>FarmFellowsApplication and select the green play button to run the application
+Step 6: you will need to open a web browser and navigate to `http://localhost:8080/` then enjoy
+
