@@ -9,6 +9,7 @@
     <table>
         <caption th:text="${farmer.getDisplayName()} + '\'s Crops'"></caption>
         <script th:src="@{../js/script.js}"></script>
+        <h3 id="newprice-indicator"></h3>
         <tr>
             <th>Crop</th>
             <th>Quantity</th>
@@ -28,14 +29,22 @@
                     <input class="blueButton blueHover" type="submit" th:id="${planting.id} + 'sellButton'" value="Sell" disabled>
                 </form>
             </td>
+            <td>
+                <form th:action="@{/useboost}" th:method="POST">
+                    <input type="hidden" th:value=${planting.id} name="plantingId">
+                    <input th:if="${farmer.dailyBoost}" type="submit" value="Time Warp">
+                </form>
+            </td>
             <script th:inline="javascript">
                 id = [[${planting.id}]] + 'sellTimer';
                 timeLeft = [[${planting.timeRemaining()}]]
                 buttonid = [[${planting.id}]] + 'sellButton';
                 changeTime(id, buttonid, timeLeft);
-                //to do: button enable based on time remaining
             </script>
         </tr>
+        <script th:inline="javascript">
+            updatePage();
+        </script>
     </table>
 </div>
 </body>

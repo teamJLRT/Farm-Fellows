@@ -23,7 +23,6 @@ public class PlantingController {
     @Autowired
     PlantingRepository plantingRepository;
 
-
     @PostMapping("/planting")
     public RedirectView buyCrops(Long farmerId, Long cropId, Integer quantity){
         Farmer f = farmerRepository.findById(farmerId).orElseThrow();
@@ -53,7 +52,4 @@ public class PlantingController {
         }
         return new RedirectView("/");
     }
-
-
-
 }

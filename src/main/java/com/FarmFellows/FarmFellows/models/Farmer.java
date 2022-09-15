@@ -18,6 +18,8 @@ public class Farmer implements Comparable<Farmer>{
     private int cashOnHand;
     private boolean admin;
 
+    private boolean dailyBoost;
+
     @OneToMany(mappedBy = "farmer")
     Set<Planting> crops;
 
@@ -38,6 +40,7 @@ public class Farmer implements Comparable<Farmer>{
         this.profilePicUrl = "../img/default.png";
         this.userName = userName;
         this.displayName = fullName;
+        this.dailyBoost = true;
     }
 
     public boolean isFriend(Farmer f){
@@ -151,8 +154,18 @@ public class Farmer implements Comparable<Farmer>{
         this.displayName = displayName;
     }
 
+    public boolean isDailyBoost() {
+        return dailyBoost;
+    }
+
+    public void setDailyBoost(boolean dailyBoost) {
+        this.dailyBoost = dailyBoost;
+    }
+
     @Override
     public int compareTo(Farmer farmer) {
         return farmer.totalFarmValue() - this.totalFarmValue();
     }
+
+
 }
