@@ -7,7 +7,7 @@
 <body>
 <div id="farmerCropsDiv" class="tableDiv" th:fragment="farmerCropsDiv">
     <table>
-        <caption th:text="${farmer.getFullName()} + '\'s Crops'"></caption>
+        <caption th:text="${farmer.getDisplayName()} + '\'s Crops'"></caption>
         <script th:src="@{../js/script.js}"></script>
         <tr>
             <th>Crop</th>

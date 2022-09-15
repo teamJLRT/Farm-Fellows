@@ -15,9 +15,8 @@
                 <th>Their Farm</th>
             </tr>
             <tr th:each="farmer : ${farmerList}">
-                <td th:text="${farmer.fullName}"></td>
+                <td><a th:href="'/' + ${farmer.id}" th:text="${farmer.displayName}"></a></td>
                 <td th:text="${farmer.totalFarmValue}"></td>
-                <td><a th:href="'/' + ${farmer.id}">Link</a></td>
             </tr>
             <caption>All Farmers</caption>
         </table>

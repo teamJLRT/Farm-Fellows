@@ -7,7 +7,7 @@
 <body>
     <ul th:each="friendship : ${farmer.friends}">
         <li>
-            <p th:text="${friendship.friend.getFullName()}"></p>
+            <p th:text="${friendship.friend.getDisplayName()}"></p>
             <a th:href="'/' + ${friendship.friend.id}">Link</a>
         </li>
     </ul>
