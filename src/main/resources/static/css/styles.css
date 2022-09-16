@@ -1,11 +1,11 @@
 @import "reset.css";
 
-/* Color Theme Swatches in Hex */
 .blue1 { color: #3F83BF; }
 .blue2 { color: #71A8D9; }
 .green1 { color: #465902; }
 .green2 { color: #B9BF04; }
 .green3 { color: #A1A621; }
+
 
 body {
     background-color: #A1A621;
@@ -29,7 +29,7 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
-    color:#c5ddf1;
+    color:#392109;
     font-weight: bold;
     border-top: 2px solid #392109;
 }
@@ -121,6 +121,10 @@ input[type=number] {
     width: 75px;
 }
 
+textarea {
+    font-family: 'Archivo', sans-serif;
+}
+
 .fancy {
     font-family: 'Pacifico', sans-serif;
     color: #7a4611;
@@ -128,8 +132,8 @@ input[type=number] {
 }
 
 p.fancy {
-    font-size: 1.7em;
-    float: left;
+    font-size: 1.8em;
+    margin-right: auto;
 }
 
 .navButton {
@@ -219,7 +223,7 @@ p.fancy {
 }
 
 .friendLink:hover {
-    color: #3F83BF;
+    color: #3F83BF !important;
 }
 
 .friendLink:visited {
@@ -241,6 +245,7 @@ p.fancy {
     margin: 10px;
     color: #131d25;
     min-width: 190px;
+    width: fit-content;
 }
 
 .infoLabel {
@@ -256,6 +261,54 @@ p.fancy {
 .commentFrom {
     font-style: italic;
 }
+
+/* https://codepen.io/alvarotrigo/pen/dyzxgOO */
+.growShadow {
+    text-shadow: 3px 3px 0 #6A3D0F, 6px 6px 0 #5A340D,
+    9px 9px #492A0B, 12px 12px 0 #392109;
+    color: #7A4611;
+    background-clip: text;
+    animation: shadows 3s ease-in forwards, move 3s ease-in forwards;
+}
+
+@keyframes shadows {
+    0% {
+      text-shadow: none;
+    }
+    20% {
+      text-shadow: 3px 3px 0 #6A3D0F;
+    }
+    40% {
+      text-shadow: 3px 3px 0 #6A3D0F,
+        6px 6px 0 #5A340D;
+    }
+    60% {
+      text-shadow: 3px 3px 0 #6A3D0F,
+        6px 6px 0 #5A340D, 9px 9px #492A0B;
+    }
+    80% {
+      text-shadow: 3px 3px 0 #6A3D0F,
+        6px 6px 0 #5A340D, 9px 9px #492A0B,
+        12px 12px 0 #392109;
+    }
+    100% {
+      text-shadow: 3px 3px 0 #6A3D0F,
+        6px 6px 0 #5A340D, 9px 9px #492A0B,
+        12px 12px 0 #392109;
+    }
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    80% {
+      transform: translate(-12px, -12px);
+    }
+    100% {
+      transform: translate(-12px, -12px);
+    }
+  }
 
 #footer-text {
     margin: auto;
@@ -282,4 +335,8 @@ p.fancy {
 #splashText {
     margin: 100px auto;
     width: fit-content;
+}
+
+#allFarmersDiv {
+    margin: auto;
 }

@@ -7,14 +7,14 @@
 <header th:insert="fragments/header.html :: header">
 </header>
 <main>
-    <div id="allFarmersDiv">
+    <div id="allFarmersDiv" class="farmer-info">
         <table class="sortable">
             <tr>
                 <th>Farmer</th>
                 <th>Farm Value</th>
             </tr>
             <tr th:each="farmer : ${farmerList}">
-                <td><a th:href="'/' + ${farmer.id}" th:text="${farmer.displayName}"></a></td>
+                <td><a class="friendLink" th:href="'/' + ${farmer.id}" th:text="${farmer.displayName}"></a></td>
                 <td th:text="${farmer.totalFarmValue}"></td>
             </tr>
             <caption>All Farmers</caption>
