@@ -16,7 +16,7 @@ body {
 main {
     padding: 25px;
     display: block;
-    margin: 0px auto 50px auto;
+    margin: 50px auto;
 }
 
 main > * {
@@ -40,6 +40,14 @@ nav {
     justify-content: end;
     align-items: center;
     min-height: 50px;
+    border-bottom: 2px solid #131d25;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav *:first-child {
+    justify-content: start;
 }
 
 nav * {
@@ -113,6 +121,17 @@ input[type=number] {
     width: 75px;
 }
 
+.fancy {
+    font-family: 'Pacifico', sans-serif;
+    color: #7a4611;
+    text-shadow: .07em .07em #392109;
+}
+
+p.fancy {
+    font-size: 1.7em;
+    float: left;
+}
+
 .navButton {
     background-color: #c5ddf1;
     padding: 3px;
@@ -132,6 +151,18 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.farmerCropsDiv {
+    background-color: #cacf49;
+}
+
+.cropsTable {
+    background-color: #7a4611;
+    color: white;
+    margin: 10px;
+    width: fit-content;
+    border: 2px solid #131d25;
 }
 
 .blueButton {
@@ -248,14 +279,7 @@ input[type=number] {
     border: 2px solid #131d25;
 }
 
-.farmerCropsDiv {
-    background-color: #cacf49;
-}
-
-.cropsTable {
-    background-color: #7a4611;
-    color: white;
-    margin: 10px;
+#splashText {
+    margin: 100px auto;
     width: fit-content;
-    border: 2px solid #131d25;
 }

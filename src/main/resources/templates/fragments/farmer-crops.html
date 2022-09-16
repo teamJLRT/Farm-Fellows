@@ -16,6 +16,7 @@
             <th>Planted</th>
             <th>Time Remaining</th>
             <th>&nbsp;</th>
+            <th>&nbsp;</th>
         </tr>
         <tr th:each="planting : ${plantings}">
             <td th:text="${planting.crop.cropName}"></td>
@@ -32,7 +33,7 @@
             <td>
                 <form th:action="@{/useboost}" th:method="POST">
                     <input type="hidden" th:value=${planting.id} name="plantingId">
-                    <input th:if="${farmer.dailyBoost}" type="submit" value="Time Warp">
+                    <input class="blueButton blueHover" th:if="${farmer.dailyBoost}" type="submit" value="Time Warp">
                 </form>
             </td>
             <script th:inline="javascript">
