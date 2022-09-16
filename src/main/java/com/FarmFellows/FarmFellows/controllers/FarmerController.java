@@ -103,7 +103,7 @@ public class FarmerController {
         if(principal != null){
             Farmer receivingComment = farmerRepository.findById(id).orElseThrow();
             Farmer makingComment = farmerRepository.findById(farmerId).orElseThrow();
-            Comment comment = new Comment(receivingComment, makingComment.getFullName(), text);
+            Comment comment = new Comment(receivingComment, makingComment.getDisplayName(), text);
             commentRepository.save(comment);
         }
         return new RedirectView("/" + id);
