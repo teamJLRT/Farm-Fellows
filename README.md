@@ -197,5 +197,6 @@ GOOGLE_CLIENT_SECRET=client secret provided during OAuth signup
 
 **Step 5:** navigate to FarmFellowsApplication
 Src>main>java>FarmFellowsApplication and select the green play button to run the application
+
 **Step 6:** you will need to open a web browser and navigate to `http://localhost:8080/` then enjoy
 
