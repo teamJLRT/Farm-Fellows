@@ -55,7 +55,7 @@ public class GameConfig {
         cropRepository.save(c);
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
+    @Scheduled(fixedDelay = 1000 * 60 * 60 * 3)
     public void restoreDailyBoost(){
         List<Farmer> farmers = farmerRepository.findAll();
         for (Farmer f : farmers){
