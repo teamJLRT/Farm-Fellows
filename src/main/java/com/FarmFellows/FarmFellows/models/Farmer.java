@@ -1,5 +1,8 @@
 package com.FarmFellows.FarmFellows.models;
 
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.collection.internal.PersistentSet;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -59,8 +62,11 @@ public class Farmer implements Comparable<Farmer>{
 
     public Integer totalFarmValue() {
         Integer totalFarmValue = this.cashOnHand;
-        for (Planting crop :
-                this.crops) {
+        if (this.crops == null){
+            return 0;
+        }
+
+        for (Planting crop : this.crops) {
             totalFarmValue += crop.getQuantity() * crop.getCrop().getSeedPrice();
         }
         return totalFarmValue;
