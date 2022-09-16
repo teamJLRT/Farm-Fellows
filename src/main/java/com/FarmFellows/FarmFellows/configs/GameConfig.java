@@ -37,7 +37,7 @@ public class GameConfig {
         }
 
         Integer buyPrice = c.getSeedPrice();
-        Double buyChange = Math.ceil((buyPrice * change)/10);
+        Double buyChange = Math.ceil((buyPrice * change)/5);
         Integer newBuyPrice = (int)(buyPrice + buyChange);
         if (newBuyPrice <= 0){
             newBuyPrice = r.nextInt(3) + 1;
@@ -45,7 +45,7 @@ public class GameConfig {
         c.setSeedPrice(newBuyPrice);
 
         Integer sellPrice = c.getCropSellPrice();
-        Double sellChange = Math.ceil((sellPrice * change)/10);
+        Double sellChange = Math.ceil((sellPrice * change)/5);
         Integer newSellPrice= (int)(sellPrice + sellChange);
         if (newSellPrice <= newBuyPrice){
             newSellPrice = newBuyPrice + r.nextInt(3) + 1;
@@ -55,11 +55,12 @@ public class GameConfig {
         cropRepository.save(c);
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60 * 3)
+    @Scheduled(cron = "1 0 * * *")
     public void restoreDailyBoost(){
         List<Farmer> farmers = farmerRepository.findAll();
         for (Farmer f : farmers){
             f.setDailyBoost(true);
+            farmerRepository.save(f);
         }
     }
 }
