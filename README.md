@@ -161,7 +161,9 @@ Present a game where you are able to view (through plain text) the state of crop
 
 ## Domain Model & Database Schema
 
-![Farm Fellows Domain Model & Database Schema](./images/FarmFellows-domain-model-db-schema.png)
+![Farm Fellows Brainstorming Domain Model & Database Schema](./images/FarmFellows-domain-model-db-schema.png)
+
+![Farm Fellows Final Domain Model & Database Schema](./images/FarmFellows-final-db-schema.png)
 
 # Tutorial for setup
 
