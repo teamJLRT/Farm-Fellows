@@ -55,7 +55,7 @@ public class GameConfig {
         cropRepository.save(c);
     }
 
-    @Scheduled(cron = "1 0 * * *")
+    @Scheduled(cron = "1 0 * * * ?")
     public void restoreDailyBoost(){
         List<Farmer> farmers = farmerRepository.findAll();
         for (Farmer f : farmers){
